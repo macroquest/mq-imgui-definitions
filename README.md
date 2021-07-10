@@ -13,4 +13,4 @@ require 'ImGui'
 
 ```
 
-When requireing the ImGui bindings in your Lua script, just annotate the require with a type ImGui as shown above.  This will then provide autocomplete for ImGui methods and enum types.
+When requiring the ImGui bindings in your Lua script, just annotate the require with a type ImGui as shown above.  This will then provide autocomplete for ImGui methods and enum types.
