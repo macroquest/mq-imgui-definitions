@@ -469,3 +469,63 @@ ImGuiTreeNodeFlags = {}
 
 --- @type ImGuiSortDirection
 ImGuiSortDirection = {}
+
+
+--- @class ImGuiCol
+--- @field public Text any
+--- @field public TextDisabled any
+--- @field public WindowBg any
+--- @field public ChildBg any
+--- @field public PopupBg any Background of popups, menus
+--- @field public Border any
+--- @field public BorderShadow any
+--- @field public FrameBg any Background of checkbox, radio button, plot, slider
+--- @field public FrameBgHovered any
+--- @field public FrameBgActive any
+--- @field public TitleBg any
+--- @field public TitleBgActive any
+--- @field public TitleBgCollapsed any
+--- @field public MenuBarBg any
+--- @field public ScrollbarBg any
+--- @field public ScrollbarGrab any
+--- @field public ScrollbarGrabHovered any
+--- @field public ScrollbarGrabActive any
+--- @field public CheckMark any
+--- @field public SliderGrab any
+--- @field public SliderGrabActive any
+--- @field public Button any
+--- @field public ButtonHovered any
+--- @field public ButtonActive any
+--- @field public Header any Header* colors are used for CollapsingHeader, TreeNode, Selectable
+--- @field public HeaderHovered any
+--- @field public HeaderActive any
+--- @field public Separator any
+--- @field public SeparatorHovered any
+--- @field public SeparatorActive any
+--- @field public ResizeGrip any
+--- @field public ResizeGripHovered any
+--- @field public ResizeGripActive any
+--- @field public Tab any
+--- @field public TabHovered any
+--- @field public TabActive any
+--- @field public TabUnfocused any
+--- @field public TabUnfocusedActive any
+--- @field public PlotLines any
+--- @field public PlotLinesHovered any
+--- @field public PlotHistogram any
+--- @field public PlotHistogramHovered any
+--- @field public TableHeaderBg any
+--- @field public TableBorderStrong any
+--- @field public TableBorderLight any
+--- @field public TableRowBg any
+--- @field public TableRowBgAlt any
+--- @field public TextSelectedBg any
+--- @field public DragDropTarget any
+--- @field public NavHighlight any
+--- @field public NavWindowingHighlight any
+--- @field public NavWindowingDimBg any Darken/colorize entire screen behind the CTRL+TAB window list
+--- @field public ModalWindowDimBg any Darken/colorize entire screen behind a modal window
+--- @field COUNT any
+
+--- @type ImGuiCol
+ImGuiCol = {}
