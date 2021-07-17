@@ -529,3 +529,19 @@ ImGuiSortDirection = {}
 
 --- @type ImGuiCol
 ImGuiCol = {}
+
+--- @class ImGuiTabBarFlags
+--- @field public None any
+--- @field public Reorderable any Allow manually dragging tabs to re-order them + New tabs are appended at the end of list
+--- @field public AutoSelectNewTabs any Automatically select new tabs when they appear
+--- @field public TabListPopupButton any Disable buttons to open the tab list popup
+--- @field public NoCloseWithMiddleMouseButton any Disable behavior of closing tabs (that are submitted with p_open != NULL) with middle mouse button. You can still repro this behavior on user's side with if (IsItemHovered() && IsMouseClicked(2)) *p_open = false.
+--- @field public NoTabListScrollingButtons any Disable scrolling buttons (apply when fitting policy is ImGuiTabBarFlags_FittingPolicyScroll)
+--- @field public NoTooltip any Disable tooltips when hovering a tab
+--- @field public FittingPolicyResizeDown any Resize tabs when they don't fit
+--- @field public FittingPolicyScroll any Add scroll buttons when tabs don't fit
+--- @field public FittingPolicyMask any ImGuiTabBarFlags_FittingPolicyResizeDown | ImGuiTabBarFlags_FittingPolicyScroll,
+--- @field public FittingPolicyDefault any ImGuiTabBarFlags_FittingPolicyResizeDown
+
+--- @type ImGuiTabBarFlags
+ImGuiTabBarFlags = {}
