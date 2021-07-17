@@ -525,7 +525,6 @@ ImGuiSortDirection = {}
 --- @field public NavWindowingHighlight any
 --- @field public NavWindowingDimBg any Darken/colorize entire screen behind the CTRL+TAB window list
 --- @field public ModalWindowDimBg any Darken/colorize entire screen behind a modal window
---- @field COUNT any
 
 --- @type ImGuiCol
 ImGuiCol = {}
@@ -540,8 +539,6 @@ ImGuiCol = {}
 --- @field public NoTooltip any Disable tooltips when hovering a tab
 --- @field public FittingPolicyResizeDown any Resize tabs when they don't fit
 --- @field public FittingPolicyScroll any Add scroll buttons when tabs don't fit
---- @field public FittingPolicyMask any ImGuiTabBarFlags_FittingPolicyResizeDown | ImGuiTabBarFlags_FittingPolicyScroll,
---- @field public FittingPolicyDefault any ImGuiTabBarFlags_FittingPolicyResizeDown
 
 --- @type ImGuiTabBarFlags
 ImGuiTabBarFlags = {}
