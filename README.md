@@ -1,7 +1,7 @@
 ## MacroQuest Next ImGui Lua Autocomplete Defintions (EmmyLua)
 
 ### How to Use
-- Place files somewhere in your MQNext Lua directory or subdirectory
+- Place files in a sudirectory under your MQNext Lua directory
 - Ensure your IDE has been installed with a Lua Lanugage server Extension/Addon that supports EmmyLua annotations.
 
 ```lua
