@@ -40,6 +40,16 @@ function ImGui.SetWindowSize(...)end
 function ImGui.SetWindowCollapsed(...)end
 function ImGui.SetWindowFocus(...)end
 
+---@class ImGuiCond
+---@field public None any
+---@field public Always any
+---@field public Once any
+---@field public FirstUseEver any
+---@field public Appearing any
+
+---@type ImGuiCond
+ImGuiCond = {}
+
 --- Content Region
 function ImGui.GetContentRegionMax()end
 function ImGui.GetContentRegionAvail()end
@@ -343,6 +353,7 @@ function ImGui.Register(...)end
 ImGuiStyleVar = {}
 ImGuiListClipper = {}
 ImVec2 = {}
+ImVec4 = {}
 bit32 = {}
 
 --- Tables
@@ -467,9 +478,12 @@ ImGuiTreeNodeFlags = {}
 --- @field Ascending any 0->9, A->Z etc.
 --- @field Descending any 9->0, Z->A etc.
 
+
+
+
+
 --- @type ImGuiSortDirection
 ImGuiSortDirection = {}
-
 
 --- @class ImGuiCol
 --- @field public Text any
@@ -542,3 +556,24 @@ ImGuiCol = {}
 
 --- @type ImGuiTabBarFlags
 ImGuiTabBarFlags = {}
+
+--- @class ImGuiTreeNodeFlags
+--- @field public None any
+--- @field public Selected any
+--- @field public Framed any
+--- @field public AllowItemOverlap any
+--- @field public NoTreePushOnOpen any
+--- @field public NoAutoOpenOnLog any
+--- @field public DefaultOpen any
+--- @field public OpenOnDoubleClick any
+--- @field public OpenOnArrow any
+--- @field public Leaf any
+--- @field public Bullet any
+--- @field public FramePadding any
+--- @field public SpanAvailWidth any
+--- @field public SpanFullWidth any
+--- @field public NavLeftJumpsBackHere any
+--- @field public CollapsingHeader any
+
+--- @type ImGuiTreeNodeFlags
+ImGuiTreeNodeFlags = {}
