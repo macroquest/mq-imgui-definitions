@@ -389,17 +389,24 @@ function ImGui.Register(...)end
 --- @field IndentSpacing any
 --- @field ItemSpacing any
 
+---@type ImGuiStyleVar
 ImGuiStyleVar = {}
 
 ImGuiListClipper = {}
 
+---@class ImVec2
+---@field public x float
+---@field public y float 
+
 ---@type ImVec2
----@field x float
----@field y float 
 ImVec2 = {}
 
 ImVec4 = {}
 
+---@class Bit32
+---@field public bor fun(...):int
+
+---@type Bit32
 bit32 = {}
 
 --- Tables
