@@ -6,6 +6,45 @@
 ImGui = {}
 
 --- Windows
+
+
+--- ImGuiWindowFlags
+--- @class ImGuiWindowFlags
+--- @field public None int
+--- @field public NoTitleBar int Remove TitleBar from Window  
+--- @field public NoResize int Disable Window resize  
+--- @field public NoMove int
+--- @field public NoScrollbar int
+--- @field public NoScrollWithMouse int
+--- @field public NoCollapse int
+--- @field public AlwaysAutoResize int
+--- @field public NoBackground int
+--- @field public NoSavedSettings int
+--- @field public NoMouseInputs int
+--- @field public MenuBar int
+--- @field public HorizontalScrollbar int
+--- @field public NoFocusOnAppearing int
+--- @field public NoBringToFrontOnFocus int
+--- @field public AlwaysVerticalScrollbar int
+--- @field public AlwaysHorizontalScrollbar int
+--- @field public AlwaysUseWindowPadding int
+--- @field public NoNavInputs int
+--- @field public NoNavFocus int
+--- @field public UnsavedDocument int
+--- @field public NoDocking int
+--- @field public NoNav int
+--- @field public NoDecoration int
+--- @field public NoInputs int
+--- @field public NavFlattened int
+--- @field public ChildWindow int
+--- @field public Tooltip int
+--- @field public Popup int
+--- @field public Modal int
+--- @field public ChildMenu int
+
+--- @type ImGuiWindowFlags
+ImGuiWindowFlags = {}
+
 function ImGui.Begin(...)end
 function ImGui.End()end
 
@@ -351,13 +390,26 @@ function ImGui.Register(...)end
 --- @field ItemSpacing any
 
 ImGuiStyleVar = {}
+
 ImGuiListClipper = {}
+
+---@type ImVec2
+---@field x float
+---@field y float 
 ImVec2 = {}
+
 ImVec4 = {}
+
 bit32 = {}
 
 --- Tables
-function ImGui.BeginTable(...)end
+---@param name string
+---@param columnsCount int
+---@param tableFlags ImGuiTableFlags
+---@param outerSize ImVec2
+---@param innerWidth float
+---@return bool
+function ImGui.BeginTable(name, columnsCount, tableFlags, outerSize, innerWidth)end
 function ImGui.EndTable()end
 function ImGui.TableSetupColumn(...)end
 function ImGui.TableSetBgColor(...)end
