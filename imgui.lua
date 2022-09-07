@@ -183,13 +183,24 @@ function ImGui.PopID()end
 function ImGui.GetID(...)end
 
 --- Widgets: Text
+---@param ... string
 function ImGui.TextUnformatted(...)end
 ---@param text string
 function ImGui.Text(text)end
-function ImGui.TextColored(...)end
-function ImGui.TextDisabled(...)end
+---@param r number
+---@param g number
+---@param b number
+---@param a number
+---@param text string
+function ImGui.TextColored(r, g, b, a, text)end
+---@param text string
+function ImGui.TextDisabled(text)end
+---@param ... string
 function ImGui.TextWrapped(...)end
-function ImGui.LabelText(...)end
+---@param label string
+---@param text string
+function ImGui.LabelText(label, text)end
+---@param ... string
 function ImGui.BulletText(...)end
 
 --- Widgets: Main
