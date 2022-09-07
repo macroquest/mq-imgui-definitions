@@ -61,6 +61,17 @@ function ImGui.End()end
 function ImGui.BeginChild(name, sizeX, sizeY, shouldDraw, imGuiWindowFlags)end
 function ImGui.EndChild()end
 
+
+---@class ImGuiCond
+---@field public None any
+---@field public Always any
+---@field public Once any
+---@field public FirstUseEver any
+---@field public Appearing any
+
+---@type ImGuiCond
+ImGuiCond = {}
+
 --- Windows Utilities
 ---@return boolean isAppearing
 function ImGui.IsWindowAppearing()end
@@ -82,51 +93,84 @@ function ImGui.GetWindowSize()end
 function ImGui.GetWindowWidth()end
 ---@return number height
 function ImGui.GetWindowHeight()end
-function ImGui.SetNextWindowPos(...)end
-function ImGui.SetNextWindowSize(...)end
-function ImGui.SetNextWindowSizeConstraints(...)end
-function ImGui.SetNextWindowContentSize(...)end
-function ImGui.SetNextWindowCollapsed(...)end
+---@param posX number
+---@param posY number
+---@param imGuiCond? ImGuiCond
+---@param pivotX? number
+---@param pivotY? number
+function ImGui.SetNextWindowPos(posX, posY, imGuiCond, pivotX, pivotY)end
+---@param sizeX number
+---@param sizeY number
+---@param imGuiCond? ImGuiCond
+function ImGui.SetNextWindowSize(sizeX, sizeY, imGuiCond)end
+---@param minX number
+---@param minY number
+---@param maxX number
+---@param maxY number
+function ImGui.SetNextWindowSizeConstraints(minX, minY, maxX, maxY)end
+---@param sizeX number
+---@param sizeY number
+function ImGui.SetNextWindowContentSize(sizeX, sizeY)end
+---@param isCollapsed boolean
+---@param imGuiCond? ImGuiCond
+function ImGui.SetNextWindowCollapsed(isCollapsed, imGuiCond)end
 function ImGui.SetNextWindowFocus()end
-function ImGui.SetNextWindowBgAlpha(...)end
-function ImGui.SetWindowPos(...)end
-function ImGui.SetWindowSize(...)end
-function ImGui.SetWindowCollapsed(...)end
-function ImGui.SetWindowFocus()end
-function ImGui.SetWindowFontScale(...)end
-function ImGui.SetWindowPos(...)end
-function ImGui.SetWindowSize(...)end
-function ImGui.SetWindowCollapsed(...)end
-function ImGui.SetWindowFocus(...)end
-
----@class ImGuiCond
----@field public None any
----@field public Always any
----@field public Once any
----@field public FirstUseEver any
----@field public Appearing any
-
----@type ImGuiCond
-ImGuiCond = {}
+---@param alpha number
+function ImGui.SetNextWindowBgAlpha(alpha)end
+---@param name string
+---@param posX number
+---@param posY number
+---@param imGuiCond? ImGuiCond
+function ImGui.SetWindowPos(name, posX, posY, imGuiCond)end
+---@param name string
+---@param sizeX number
+---@param sizeY number
+---@param imGuiCond? ImGuiCond
+function ImGui.SetWindowSize(name, sizeX, sizeY, imGuiCond)end
+---@param name string
+---@param isCollapsed boolean
+---@param imGuiCond? ImGuiCond
+function ImGui.SetWindowCollapsed(name, isCollapsed, imGuiCond)end
+---@param scale number
+function ImGui.SetWindowFontScale(scale)end
+---@param name? string
+function ImGui.SetWindowFocus(name)end
 
 --- Content Region
+---@return number x, number y
 function ImGui.GetContentRegionMax()end
+---@return number x, number y
 function ImGui.GetContentRegionAvail()end
+---@return number x, number y
 function ImGui.GetWindowContentRegionMin()end
+---@return number x, number y
 function ImGui.GetWindowContentRegionMax()end
+---@return number width
 function ImGui.GetWindowContentRegionWidth()end
 
 --- Windows Scrolling
+---@return number x
 function ImGui.GetScrollX()end
+---@return number y
 function ImGui.GetScrollY()end
+---@return number x
 function ImGui.GetScrollMaxX()end
+---@return number y
 function ImGui.GetScrollMaxY()end
-function ImGui.SetScrollX(...)end
-function ImGui.SetScrollY(...)end
-function ImGui.SetScrollHereX(...)end
-function ImGui.SetScrollHereY(...)end
-function ImGui.SetScrollFromPosX(...)end
-function ImGui.SetScrollFromPosY(...)end
+---@param scrollX number
+function ImGui.SetScrollX(scrollX)end
+---@param scrollY number
+function ImGui.SetScrollY(scrollY)end
+---@param scrollX? number
+function ImGui.SetScrollHereX(scrollX)end
+---@param scrollY? number
+function ImGui.SetScrollHereY(scrollY)end
+---@param localX number
+---@param centerXRatio? number
+function ImGui.SetScrollFromPosX(localX, centerXRatio)end
+---@param localY number
+---@param centerYRatio? number
+function ImGui.SetScrollFromPosY(localY, centerYRatio)end
 
 --- Parameters Stacks (Shared)
 function ImGui.PushFont(...)end
