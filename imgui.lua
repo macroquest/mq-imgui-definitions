@@ -10,57 +10,77 @@ ImGui = {}
 
 --- ImGuiWindowFlags
 --- @class ImGuiWindowFlags
---- @field public None int
---- @field public NoTitleBar int Remove TitleBar from Window  
---- @field public NoResize int Disable Window resize  
---- @field public NoMove int
---- @field public NoScrollbar int
---- @field public NoScrollWithMouse int
---- @field public NoCollapse int
---- @field public AlwaysAutoResize int
---- @field public NoBackground int
---- @field public NoSavedSettings int
---- @field public NoMouseInputs int
---- @field public MenuBar int
---- @field public HorizontalScrollbar int
---- @field public NoFocusOnAppearing int
---- @field public NoBringToFrontOnFocus int
---- @field public AlwaysVerticalScrollbar int
---- @field public AlwaysHorizontalScrollbar int
---- @field public AlwaysUseWindowPadding int
---- @field public NoNavInputs int
---- @field public NoNavFocus int
---- @field public UnsavedDocument int
---- @field public NoDocking int
---- @field public NoNav int
---- @field public NoDecoration int
---- @field public NoInputs int
---- @field public NavFlattened int
---- @field public ChildWindow int
---- @field public Tooltip int
---- @field public Popup int
---- @field public Modal int
---- @field public ChildMenu int
+--- @field public None integer
+--- @field public NoTitleBar integer Remove TitleBar from Window  
+--- @field public NoResize integer Disable Window resize  
+--- @field public NoMove integer
+--- @field public NoScrollbar integer
+--- @field public NoScrollWithMouse integer
+--- @field public NoCollapse integer
+--- @field public AlwaysAutoResize integer
+--- @field public NoBackground integer
+--- @field public NoSavedSettings integer
+--- @field public NoMouseInputs integer
+--- @field public MenuBar integer
+--- @field public HorizontalScrollbar integer
+--- @field public NoFocusOnAppearing integer
+--- @field public NoBringToFrontOnFocus integer
+--- @field public AlwaysVerticalScrollbar integer
+--- @field public AlwaysHorizontalScrollbar integer
+--- @field public AlwaysUseWindowPadding integer
+--- @field public NoNavInputs integer
+--- @field public NoNavFocus integer
+--- @field public UnsavedDocument integer
+--- @field public NoDocking integer
+--- @field public NoNav integer
+--- @field public NoDecoration integer
+--- @field public NoInputs integer
+--- @field public NavFlattened integer
+--- @field public ChildWindow integer
+--- @field public Tooltip integer
+--- @field public Popup integer
+--- @field public Modal integer
+--- @field public ChildMenu integer
 
 --- @type ImGuiWindowFlags
 ImGuiWindowFlags = {}
 
-function ImGui.Begin(...)end
+---@param name string
+---@param isOpen? boolean
+---@param imGuiWindowFlags? integer
+---@return boolean isOpen, boolean shouldDraw
+function ImGui.Begin(name, isOpen, imGuiWindowFlags) end
 function ImGui.End()end
 
 --- ChildWindows
-function ImGui.BeginChild(...)end
+---@param name string
+---@param sizeX? number
+---@param sizeY? number
+---@param shouldDraw? boolean
+---@param imGuiWindowFlags? integer
+function ImGui.BeginChild(name, sizeX, sizeY, shouldDraw, imGuiWindowFlags)end
 function ImGui.EndChild()end
 
 --- Windows Utilities
+---@return boolean isAppearing
 function ImGui.IsWindowAppearing()end
+---@return boolean isCollapsed
 function ImGui.IsWindowCollapsed()end
-function ImGui.IsWindowFocused(...)end
-function ImGui.IsWindowHovered(...)end
+---@param imGuiFocusedFlags? integer
+---@return boolean isFocused
+function ImGui.IsWindowFocused(imGuiFocusedFlags)end
+---@param imGuiHoveredFlags? integer
+---@return boolean isFocused
+function ImGui.IsWindowHovered(imGuiHoveredFlags)end
+---@return number dpiScale
 function ImGui.GetWindowDpiScale()end
+---@return number posX,number posY
 function ImGui.GetWindowPos()end
+---@return number sizeX,number sizeY
 function ImGui.GetWindowSize()end
+---@return number width
 function ImGui.GetWindowWidth()end
+---@return number height
 function ImGui.GetWindowHeight()end
 function ImGui.SetNextWindowPos(...)end
 function ImGui.SetNextWindowSize(...)end
@@ -164,7 +184,8 @@ function ImGui.GetID(...)end
 
 --- Widgets: Text
 function ImGui.TextUnformatted(...)end
-function ImGui.Text(...)end
+---@param text string
+function ImGui.Text(text)end
 function ImGui.TextColored(...)end
 function ImGui.TextDisabled(...)end
 function ImGui.TextWrapped(...)end
@@ -393,22 +414,24 @@ ImGuiStyleVar = {}
 
 ImGuiListClipper = {}
 
----@type ImVec2
----@field x float
----@field y float 
+---@class ImVec2
+---@field x number
+---@field y number 
 ImVec2 = {}
 
 ImVec4 = {}
 
 bit32 = {}
+---@return integer
+function bit32.bor(...) end
 
 --- Tables
 ---@param name string
----@param columnsCount int
+---@param columnsCount integer
 ---@param tableFlags ImGuiTableFlags
 ---@param outerSize ImVec2
----@param innerWidth float
----@return bool
+---@param innerWidth number
+---@return boolean
 function ImGui.BeginTable(name, columnsCount, tableFlags, outerSize, innerWidth)end
 function ImGui.EndTable()end
 function ImGui.TableSetupColumn(...)end
