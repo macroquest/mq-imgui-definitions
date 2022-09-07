@@ -425,10 +425,11 @@ ImVec2 = {}
 ImVec4 = {}
 
 ---@class Bit32
----@field public bor fun(...):int
 
 ---@type Bit32
 bit32 = {}
+
+---@param ... integer Flags to xor
 ---@return integer
 function bit32.bor(...) end
 
