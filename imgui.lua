@@ -1,8 +1,6 @@
 --- Macroquest ImGui Lua Binding
 --- @class ImGui
 --- @field public ImGuiStyleVar any
-
---- @type ImGui
 ImGui = {}
 
 --- Windows
@@ -288,7 +286,12 @@ function ImGui.VSliderInt(...)end
 --- Widgets: Input with Keyboard
 function ImGui.InputText(...)end
 function ImGui.InputTextMultiline(...)end
-function ImGui.InputTextWithHint(...)end
+--- @param label string
+--- @param hint string
+--- @param text string
+--- @param imGuiInputTextFlags integer
+--- @returns string text, boolean selected
+function ImGui.InputTextWithHint(label, hint, text, imGuiInputTextFlags)end
 function ImGui.InputFloat(...)end
 function ImGui.InputFloat2(...)end
 function ImGui.InputFloat3(...)end
@@ -461,11 +464,9 @@ function ImGui.Register(...)end
 
 --- ImGuiStyleVar
 --- @class ImGuiStyleVar
---- @field FramePadding any
---- @field IndentSpacing any
---- @field ItemSpacing any
-
----@type ImGuiStyleVar
+--- @field FramePadding integer
+--- @field IndentSpacing integer
+--- @field ItemSpacing integer
 ImGuiStyleVar = {}
 
 ImGuiListClipper = {}
@@ -473,15 +474,11 @@ ImGuiListClipper = {}
 ---@class ImVec2
 ---@field x number
 ---@field y number 
-
----@type ImVec2
 ImVec2 = {}
 
 ImVec4 = {}
 
 ---@class Bit32
-
----@type Bit32
 bit32 = {}
 
 ---@param ... integer Flags to xor
@@ -491,9 +488,9 @@ function bit32.bor(...) end
 --- Tables
 ---@param name string
 ---@param columnsCount integer
----@param tableFlags ImGuiTableFlags
----@param outerSize ImVec2
----@param innerWidth number
+---@param tableFlags? ImGuiTableFlags
+---@param outerSize? ImVec2
+---@param innerWidth? number
 ---@return boolean
 function ImGui.BeginTable(name, columnsCount, tableFlags, outerSize, innerWidth)end
 function ImGui.EndTable()end
@@ -544,8 +541,6 @@ function ImGui.TableNextColumn()end
 --- @field public SortMulti any Hold shift when clicking headers to sort on multiple column. TableGetSortSpecs() may return specs where (SpecsCount > 1).
 --- @field public SortTristate any Allow no sorting, disable default sorting. TableGetSortSpecs() may return specs where (SpecsCount == 0).
 --- @field public MultiSortable any Allows Sorting on multiple columns
-
---- @type ImGuiTableFlags
 ImGuiTableFlags = {}
 
 --- ImGuiTableColumnFlags
@@ -577,8 +572,6 @@ ImGuiTableFlags = {}
 --- @field public IndentMask_ any
 --- @field public StatusMask_ any
 --- @field public NoDirectResize_ any [Internal] Disable user resizing this column directly (it may however we resized indirectly from its left edge)
-
---- @type ImGuiTableColumnFlags
 ImGuiTableColumnFlags = {}
 
 --- @class ImGuiTableBgTarget
@@ -586,8 +579,6 @@ ImGuiTableColumnFlags = {}
 --- @field RowBg0 any Set row background color 0 (generally used for background, automatically set when ImGuiTableFlags_RowBg is used)
 --- @field RowBg1 any Set row background color 1 (generally used for selection marking)
 --- @field CellBg any Set cell background color (top-most color)
-
---- @type ImGuiTableBgTarget
 ImGuiTableBgTarget = {}
 
 --- @class ImGuiTreeNodeFlags
@@ -607,8 +598,6 @@ ImGuiTableBgTarget = {}
 --- @field public SpanFullWidth any Extend hit box to the left-most and right-most edges (bypass the indented area).
 --- @field public NavLeftJumpsBackHere any (WIP) Nav: left direction may move to this TreeNode() from any of its child (items submitted between TreeNode and TreePop)
 --- @field public CollapsingHeader any
-
---- @type ImGuiTreeNodeFlags
 ImGuiTreeNodeFlags = {}
 
 --- @class ImGuiSortDirection
@@ -677,8 +666,6 @@ ImGuiSortDirection = {}
 --- @field public NavWindowingHighlight any
 --- @field public NavWindowingDimBg any Darken/colorize entire screen behind the CTRL+TAB window list
 --- @field public ModalWindowDimBg any Darken/colorize entire screen behind a modal window
-
---- @type ImGuiCol
 ImGuiCol = {}
 
 --- @class ImGuiTabBarFlags
@@ -691,8 +678,6 @@ ImGuiCol = {}
 --- @field public NoTooltip any Disable tooltips when hovering a tab
 --- @field public FittingPolicyResizeDown any Resize tabs when they don't fit
 --- @field public FittingPolicyScroll any Add scroll buttons when tabs don't fit
-
---- @type ImGuiTabBarFlags
 ImGuiTabBarFlags = {}
 
 --- @class ImGuiTreeNodeFlags
@@ -712,6 +697,4 @@ ImGuiTabBarFlags = {}
 --- @field public SpanFullWidth any
 --- @field public NavLeftJumpsBackHere any
 --- @field public CollapsingHeader any
-
---- @type ImGuiTreeNodeFlags
 ImGuiTreeNodeFlags = {}
