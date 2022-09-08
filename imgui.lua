@@ -125,6 +125,10 @@ function ImGui.SetWindowPos(name, posX, posY, imGuiCond)end
 ---@param sizeY number
 ---@param imGuiCond? ImGuiCond
 function ImGui.SetWindowSize(name, sizeX, sizeY, imGuiCond)end
+---@param sizeX number
+---@param sizeY number
+---@param imGuiCond? ImGuiCond
+function ImGui.SetWindowSize(sizeX, sizeY, imGuiCond)end
 ---@param name string
 ---@param isCollapsed boolean
 ---@param imGuiCond? ImGuiCond
@@ -289,8 +293,8 @@ function ImGui.InputTextMultiline(...)end
 --- @param label string
 --- @param hint string
 --- @param text string
---- @param imGuiInputTextFlags integer
---- @returns string text, boolean selected
+--- @param imGuiInputTextFlags? integer
+--- @return string text, boolean selected
 function ImGui.InputTextWithHint(label, hint, text, imGuiInputTextFlags)end
 function ImGui.InputFloat(...)end
 function ImGui.InputFloat2(...)end
