@@ -1,8 +1,6 @@
 --- Macroquest ImGui Lua Binding
 --- @class ImGui
 --- @field public ImGuiStyleVar any
-
---- @type ImGui
 ImGui = {}
 
 --- Windows
@@ -10,74 +8,57 @@ ImGui = {}
 
 --- ImGuiWindowFlags
 --- @class ImGuiWindowFlags
---- @field public None int
---- @field public NoTitleBar int Remove TitleBar from Window  
---- @field public NoResize int Disable Window resize  
---- @field public NoMove int
---- @field public NoScrollbar int
---- @field public NoScrollWithMouse int
---- @field public NoCollapse int
---- @field public AlwaysAutoResize int
---- @field public NoBackground int
---- @field public NoSavedSettings int
---- @field public NoMouseInputs int
---- @field public MenuBar int
---- @field public HorizontalScrollbar int
---- @field public NoFocusOnAppearing int
---- @field public NoBringToFrontOnFocus int
---- @field public AlwaysVerticalScrollbar int
---- @field public AlwaysHorizontalScrollbar int
---- @field public AlwaysUseWindowPadding int
---- @field public NoNavInputs int
---- @field public NoNavFocus int
---- @field public UnsavedDocument int
---- @field public NoDocking int
---- @field public NoNav int
---- @field public NoDecoration int
---- @field public NoInputs int
---- @field public NavFlattened int
---- @field public ChildWindow int
---- @field public Tooltip int
---- @field public Popup int
---- @field public Modal int
---- @field public ChildMenu int
+--- @field public None integer
+--- @field public NoTitleBar integer Remove TitleBar from Window  
+--- @field public NoResize integer Disable Window resize  
+--- @field public NoMove integer
+--- @field public NoScrollbar integer
+--- @field public NoScrollWithMouse integer
+--- @field public NoCollapse integer
+--- @field public AlwaysAutoResize integer
+--- @field public NoBackground integer
+--- @field public NoSavedSettings integer
+--- @field public NoMouseInputs integer
+--- @field public MenuBar integer
+--- @field public HorizontalScrollbar integer
+--- @field public NoFocusOnAppearing integer
+--- @field public NoBringToFrontOnFocus integer
+--- @field public AlwaysVerticalScrollbar integer
+--- @field public AlwaysHorizontalScrollbar integer
+--- @field public AlwaysUseWindowPadding integer
+--- @field public NoNavInputs integer
+--- @field public NoNavFocus integer
+--- @field public UnsavedDocument integer
+--- @field public NoDocking integer
+--- @field public NoNav integer
+--- @field public NoDecoration integer
+--- @field public NoInputs integer
+--- @field public NavFlattened integer
+--- @field public ChildWindow integer
+--- @field public Tooltip integer
+--- @field public Popup integer
+--- @field public Modal integer
+--- @field public ChildMenu integer
 
 --- @type ImGuiWindowFlags
 ImGuiWindowFlags = {}
 
-function ImGui.Begin(...)end
+---@param name string
+---@param isOpen? boolean
+---@param imGuiWindowFlags? integer
+---@return boolean isOpen, boolean shouldDraw
+function ImGui.Begin(name, isOpen, imGuiWindowFlags) end
 function ImGui.End()end
 
 --- ChildWindows
-function ImGui.BeginChild(...)end
+---@param name string
+---@param sizeX? number
+---@param sizeY? number
+---@param shouldDraw? boolean
+---@param imGuiWindowFlags? integer
+function ImGui.BeginChild(name, sizeX, sizeY, shouldDraw, imGuiWindowFlags)end
 function ImGui.EndChild()end
 
---- Windows Utilities
-function ImGui.IsWindowAppearing()end
-function ImGui.IsWindowCollapsed()end
-function ImGui.IsWindowFocused(...)end
-function ImGui.IsWindowHovered(...)end
-function ImGui.GetWindowDpiScale()end
-function ImGui.GetWindowPos()end
-function ImGui.GetWindowSize()end
-function ImGui.GetWindowWidth()end
-function ImGui.GetWindowHeight()end
-function ImGui.SetNextWindowPos(...)end
-function ImGui.SetNextWindowSize(...)end
-function ImGui.SetNextWindowSizeConstraints(...)end
-function ImGui.SetNextWindowContentSize(...)end
-function ImGui.SetNextWindowCollapsed(...)end
-function ImGui.SetNextWindowFocus()end
-function ImGui.SetNextWindowBgAlpha(...)end
-function ImGui.SetWindowPos(...)end
-function ImGui.SetWindowSize(...)end
-function ImGui.SetWindowCollapsed(...)end
-function ImGui.SetWindowFocus()end
-function ImGui.SetWindowFontScale(...)end
-function ImGui.SetWindowPos(...)end
-function ImGui.SetWindowSize(...)end
-function ImGui.SetWindowCollapsed(...)end
-function ImGui.SetWindowFocus(...)end
 
 ---@class ImGuiCond
 ---@field public None any
@@ -89,24 +70,109 @@ function ImGui.SetWindowFocus(...)end
 ---@type ImGuiCond
 ImGuiCond = {}
 
+--- Windows Utilities
+---@return boolean isAppearing
+function ImGui.IsWindowAppearing()end
+---@return boolean isCollapsed
+function ImGui.IsWindowCollapsed()end
+---@param imGuiFocusedFlags? integer
+---@return boolean isFocused
+function ImGui.IsWindowFocused(imGuiFocusedFlags)end
+---@param imGuiHoveredFlags? integer
+---@return boolean isFocused
+function ImGui.IsWindowHovered(imGuiHoveredFlags)end
+---@return number dpiScale
+function ImGui.GetWindowDpiScale()end
+---@return number posX,number posY
+function ImGui.GetWindowPos()end
+---@return number sizeX,number sizeY
+function ImGui.GetWindowSize()end
+---@return number width
+function ImGui.GetWindowWidth()end
+---@return number height
+function ImGui.GetWindowHeight()end
+---@param posX number
+---@param posY number
+---@param imGuiCond? ImGuiCond
+---@param pivotX? number
+---@param pivotY? number
+function ImGui.SetNextWindowPos(posX, posY, imGuiCond, pivotX, pivotY)end
+---@param sizeX number
+---@param sizeY number
+---@param imGuiCond? ImGuiCond
+function ImGui.SetNextWindowSize(sizeX, sizeY, imGuiCond)end
+---@param minX number
+---@param minY number
+---@param maxX number
+---@param maxY number
+function ImGui.SetNextWindowSizeConstraints(minX, minY, maxX, maxY)end
+---@param sizeX number
+---@param sizeY number
+function ImGui.SetNextWindowContentSize(sizeX, sizeY)end
+---@param isCollapsed boolean
+---@param imGuiCond? ImGuiCond
+function ImGui.SetNextWindowCollapsed(isCollapsed, imGuiCond)end
+function ImGui.SetNextWindowFocus()end
+---@param alpha number
+function ImGui.SetNextWindowBgAlpha(alpha)end
+---@param name string
+---@param posX number
+---@param posY number
+---@param imGuiCond? ImGuiCond
+function ImGui.SetWindowPos(name, posX, posY, imGuiCond)end
+---@param name string
+---@param sizeX number
+---@param sizeY number
+---@param imGuiCond? ImGuiCond
+function ImGui.SetWindowSize(name, sizeX, sizeY, imGuiCond)end
+---@param sizeX number
+---@param sizeY number
+---@param imGuiCond? ImGuiCond
+function ImGui.SetWindowSize(sizeX, sizeY, imGuiCond)end
+---@param name string
+---@param isCollapsed boolean
+---@param imGuiCond? ImGuiCond
+function ImGui.SetWindowCollapsed(name, isCollapsed, imGuiCond)end
+---@param scale number
+function ImGui.SetWindowFontScale(scale)end
+---@param name? string
+function ImGui.SetWindowFocus(name)end
+
 --- Content Region
+---@return number x, number y
 function ImGui.GetContentRegionMax()end
+---@return number x, number y
 function ImGui.GetContentRegionAvail()end
+---@return number x, number y
 function ImGui.GetWindowContentRegionMin()end
+---@return number x, number y
 function ImGui.GetWindowContentRegionMax()end
+---@return number width
 function ImGui.GetWindowContentRegionWidth()end
 
 --- Windows Scrolling
+---@return number x
 function ImGui.GetScrollX()end
+---@return number y
 function ImGui.GetScrollY()end
+---@return number x
 function ImGui.GetScrollMaxX()end
+---@return number y
 function ImGui.GetScrollMaxY()end
-function ImGui.SetScrollX(...)end
-function ImGui.SetScrollY(...)end
-function ImGui.SetScrollHereX(...)end
-function ImGui.SetScrollHereY(...)end
-function ImGui.SetScrollFromPosX(...)end
-function ImGui.SetScrollFromPosY(...)end
+---@param scrollX number
+function ImGui.SetScrollX(scrollX)end
+---@param scrollY number
+function ImGui.SetScrollY(scrollY)end
+---@param scrollX? number
+function ImGui.SetScrollHereX(scrollX)end
+---@param scrollY? number
+function ImGui.SetScrollHereY(scrollY)end
+---@param localX number
+---@param centerXRatio? number
+function ImGui.SetScrollFromPosX(localX, centerXRatio)end
+---@param localY number
+---@param centerYRatio? number
+function ImGui.SetScrollFromPosY(localY, centerYRatio)end
 
 --- Parameters Stacks (Shared)
 function ImGui.PushFont(...)end
@@ -163,12 +229,24 @@ function ImGui.PopID()end
 function ImGui.GetID(...)end
 
 --- Widgets: Text
+---@param ... string
 function ImGui.TextUnformatted(...)end
-function ImGui.Text(...)end
-function ImGui.TextColored(...)end
-function ImGui.TextDisabled(...)end
+---@param text string
+function ImGui.Text(text)end
+---@param r number
+---@param g number
+---@param b number
+---@param a number
+---@param text string
+function ImGui.TextColored(r, g, b, a, text)end
+---@param text string
+function ImGui.TextDisabled(text)end
+---@param ... string
 function ImGui.TextWrapped(...)end
-function ImGui.LabelText(...)end
+---@param label string
+---@param text string
+function ImGui.LabelText(label, text)end
+---@param ... string
 function ImGui.BulletText(...)end
 
 --- Widgets: Main
@@ -212,7 +290,12 @@ function ImGui.VSliderInt(...)end
 --- Widgets: Input with Keyboard
 function ImGui.InputText(...)end
 function ImGui.InputTextMultiline(...)end
-function ImGui.InputTextWithHint(...)end
+--- @param label string
+--- @param hint string
+--- @param text string
+--- @param imGuiInputTextFlags? integer
+--- @return string text, boolean selected
+function ImGui.InputTextWithHint(label, hint, text, imGuiInputTextFlags)end
 function ImGui.InputFloat(...)end
 function ImGui.InputFloat2(...)end
 function ImGui.InputFloat3(...)end
@@ -385,30 +468,34 @@ function ImGui.Register(...)end
 
 --- ImGuiStyleVar
 --- @class ImGuiStyleVar
---- @field FramePadding any
---- @field IndentSpacing any
---- @field ItemSpacing any
-
+--- @field FramePadding integer
+--- @field IndentSpacing integer
+--- @field ItemSpacing integer
 ImGuiStyleVar = {}
 
 ImGuiListClipper = {}
 
----@type ImVec2
----@field x float
----@field y float 
+---@class ImVec2
+---@field x number
+---@field y number 
 ImVec2 = {}
 
 ImVec4 = {}
 
+---@class Bit32
 bit32 = {}
+
+---@param ... integer Flags to xor
+---@return integer
+function bit32.bor(...) end
 
 --- Tables
 ---@param name string
----@param columnsCount int
----@param tableFlags ImGuiTableFlags
----@param outerSize ImVec2
----@param innerWidth float
----@return bool
+---@param columnsCount integer
+---@param tableFlags? ImGuiTableFlags
+---@param outerSize? ImVec2
+---@param innerWidth? number
+---@return boolean
 function ImGui.BeginTable(name, columnsCount, tableFlags, outerSize, innerWidth)end
 function ImGui.EndTable()end
 function ImGui.TableSetupColumn(...)end
@@ -458,8 +545,6 @@ function ImGui.TableNextColumn()end
 --- @field public SortMulti any Hold shift when clicking headers to sort on multiple column. TableGetSortSpecs() may return specs where (SpecsCount > 1).
 --- @field public SortTristate any Allow no sorting, disable default sorting. TableGetSortSpecs() may return specs where (SpecsCount == 0).
 --- @field public MultiSortable any Allows Sorting on multiple columns
-
---- @type ImGuiTableFlags
 ImGuiTableFlags = {}
 
 --- ImGuiTableColumnFlags
@@ -491,8 +576,6 @@ ImGuiTableFlags = {}
 --- @field public IndentMask_ any
 --- @field public StatusMask_ any
 --- @field public NoDirectResize_ any [Internal] Disable user resizing this column directly (it may however we resized indirectly from its left edge)
-
---- @type ImGuiTableColumnFlags
 ImGuiTableColumnFlags = {}
 
 --- @class ImGuiTableBgTarget
@@ -500,8 +583,6 @@ ImGuiTableColumnFlags = {}
 --- @field RowBg0 any Set row background color 0 (generally used for background, automatically set when ImGuiTableFlags_RowBg is used)
 --- @field RowBg1 any Set row background color 1 (generally used for selection marking)
 --- @field CellBg any Set cell background color (top-most color)
-
---- @type ImGuiTableBgTarget
 ImGuiTableBgTarget = {}
 
 --- @class ImGuiTreeNodeFlags
@@ -521,8 +602,6 @@ ImGuiTableBgTarget = {}
 --- @field public SpanFullWidth any Extend hit box to the left-most and right-most edges (bypass the indented area).
 --- @field public NavLeftJumpsBackHere any (WIP) Nav: left direction may move to this TreeNode() from any of its child (items submitted between TreeNode and TreePop)
 --- @field public CollapsingHeader any
-
---- @type ImGuiTreeNodeFlags
 ImGuiTreeNodeFlags = {}
 
 --- @class ImGuiSortDirection
@@ -591,8 +670,6 @@ ImGuiSortDirection = {}
 --- @field public NavWindowingHighlight any
 --- @field public NavWindowingDimBg any Darken/colorize entire screen behind the CTRL+TAB window list
 --- @field public ModalWindowDimBg any Darken/colorize entire screen behind a modal window
-
---- @type ImGuiCol
 ImGuiCol = {}
 
 --- @class ImGuiTabBarFlags
@@ -605,8 +682,6 @@ ImGuiCol = {}
 --- @field public NoTooltip any Disable tooltips when hovering a tab
 --- @field public FittingPolicyResizeDown any Resize tabs when they don't fit
 --- @field public FittingPolicyScroll any Add scroll buttons when tabs don't fit
-
---- @type ImGuiTabBarFlags
 ImGuiTabBarFlags = {}
 
 --- @class ImGuiTreeNodeFlags
@@ -626,6 +701,4 @@ ImGuiTabBarFlags = {}
 --- @field public SpanFullWidth any
 --- @field public NavLeftJumpsBackHere any
 --- @field public CollapsingHeader any
-
---- @type ImGuiTreeNodeFlags
 ImGuiTreeNodeFlags = {}
