@@ -22,10 +22,6 @@ function ImGui.End() end
 function ImGui.BeginChild(name, sizeX, sizeY, shouldDraw, imGuiWindowFlags) end
 function ImGui.EndChild() end
 
----@return ImGuiStyle
-function ImGui.GetStyle() end
-
-
 --- Windows Utilities
 ---@return boolean isAppearing
 function ImGui.IsWindowAppearing() end
@@ -418,6 +414,7 @@ function ImGui.GetClipboardText() end
 function ImGui.SetClipboardText(...) end
 
 --- Uncategorized
+---@return ImGuiStyle
 function ImGui.GetStyle() end
 function ImGui.CheckboxFlags(...) end
 function ImGui.Register(...) end
