@@ -134,6 +134,13 @@ function ImGui.PopFont() end
 ---@param col integer
 function ImGui.PushStyleColor(imGuiCol, col) end
 
+---@param imGuiCol ImGuiCol
+---@param colR number
+---@param colG number
+---@param colB number
+---@param colA number
+function ImGui.PushStyleColor(imGuiCol, colR, colG, colB, colA) end
+
 ---@param count? integer
 function ImGui.PopStyleColor(count) end
 
