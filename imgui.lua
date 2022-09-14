@@ -129,43 +129,106 @@ function ImGui.SetScrollFromPosY(localY, centerYRatio) end
 --- Parameters Stacks (Shared)
 function ImGui.PushFont(...) end
 function ImGui.PopFont() end
-function ImGui.PushStyleColor(...) end
-function ImGui.PopStyleColor(...) end
-function ImGui.PushStyleVar(...) end
-function ImGui.PopStyleVar(...) end
-function ImGui.GetStyleColorVec4(...) end
+
+---@param imGuiCol ImGuiCol
+---@param col integer
+function ImGui.PushStyleColor(imGuiCol, col) end
+
+---@param count? integer
+function ImGui.PopStyleColor(count) end
+
+---@param imGuiStyleVar ImGuiStyleVar
+---@param value number
+function ImGui.PushStyleVar(imGuiStyleVar, value) end
+
+---@param imGuiStyleVar ImGuiStyleVar
+---@param valX number
+---@param valY number
+function ImGui.PushStyleVar(imGuiStyleVar, valX, valY) end
+
+---@param imGuiStyleVar ImGuiStyleVar
+---@param imVec2 ImVec2
+function ImGui.PushStyleVar(imGuiStyleVar, imVec2) end
+
+---@param count? integer
+function ImGui.PopStyleVar(count) end
+
+---@param imGuiCol ImGuiCol
+---@return number x, number y,number z, number w
+function ImGui.GetStyleColorVec4(imGuiCol) end
+
 function ImGui.GetFont() end
+
+---@return number
 function ImGui.GetFontSize() end
+
+---@return number x, number y
 function ImGui.GetFontTexUvWhitePixel() end
 
 --- Parameters Stacks (Current Window)
-function ImGui.PushItemWidth(...) end
+---@param itemWidth number
+function ImGui.PushItemWidth(itemWidth) end
 function ImGui.PopItemWidth() end
-function ImGui.SetNextItemWidth(...) end
+
+---@param itemWidth number
+function ImGui.SetNextItemWidth(itemWidth) end
+
+---@return number
 function ImGui.CalcItemWidth() end
-function ImGui.PushTextWrapPos(...) end
+
+---@param wrapLocalPosX number
+function ImGui.PushTextWrapPos(wrapLocalPosX) end
 function ImGui.PopTextWrapPos() end
-function ImGui.PushAllowKeyboardFocus(...) end
+
+---@param allowKeyboardFocus boolean
+function ImGui.PushAllowKeyboardFocus(allowKeyboardFocus) end
 function ImGui.PopAllowKeyboardFocus() end
-function ImGui.PushButtonRepeat(...) end
+
+---@param repeatButton boolean
+function ImGui.PushButtonRepeat(repeatButton) end
 function ImGui.PopButtonRepeat() end
 
 --- Cursor/Layout
 function ImGui.Separator() end
-function ImGui.SameLine(...) end
+
+---@param offsetFromStartX? number
+---@param spacing? number
+function ImGui.SameLine(offsetFromStartX, spacing) end
+
 function ImGui.NewLine() end
+
 function ImGui.Spacing() end
-function ImGui.Dummy(...) end
-function ImGui.Indent(...) end
-function ImGui.Unindent(...) end
+
+---@param imVec2 ImVec2
+function ImGui.Dummy(imVec2) end
+
+---@param indentW? number
+function ImGui.Indent(indentW) end
+
+---@param indentW? number
+function ImGui.Unindent(indentW) end
+
 function ImGui.BeginGroup() end
 function ImGui.EndGroup() end
+
+---@return number x, number y
 function ImGui.GetCursorPos() end
+
+---@return number
 function ImGui.GetCursorPosX() end
+
+---@return number
 function ImGui.GetCursorPosY() end
-function ImGui.SetCursorPos(...) end
-function ImGui.SetCursorPosX(...) end
-function ImGui.SetCursorPosY(...) end
+
+---@param imVec2 ImVec2
+function ImGui.SetCursorPos(imVec2) end
+
+---@param localX number
+function ImGui.SetCursorPosX(localX) end
+
+---@param localY number
+function ImGui.SetCursorPosY(localY) end
+
 function ImGui.GetCursorStartPos() end
 function ImGui.GetCursorScreenPos() end
 function ImGui.SetCursorScreenPos(...) end
@@ -207,6 +270,14 @@ function ImGui.SmallButton(...) end
 function ImGui.InvisibleButton(...) end
 function ImGui.ArrowButton(...) end
 function ImGui.Checkbox(...) end
+
+---@generic T
+---@param label string
+---@param flags T
+---@param flags_value T
+---@return T, boolean
+function ImGui.CheckboxFlags(label, flags, flags_value) end
+
 function ImGui.RadioButton(...) end
 function ImGui.ProgressBar(...) end
 function ImGui.Bullet() end
@@ -414,9 +485,10 @@ function ImGui.GetClipboardText() end
 function ImGui.SetClipboardText(...) end
 
 --- Uncategorized
+
 ---@return ImGuiStyle
 function ImGui.GetStyle() end
-function ImGui.CheckboxFlags(...) end
+
 function ImGui.Register(...) end
 
 --- Tables
