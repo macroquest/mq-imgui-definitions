@@ -1,4 +1,4 @@
-## MacroQuest Next ImGui Lua Autocomplete Defintions (EmmyLua)
+## MacroQuest Next ImGui Lua Autocomplete Defintions
 
 ### How to Use
 - Place files in a sudirectory under your MQNext Lua directory
