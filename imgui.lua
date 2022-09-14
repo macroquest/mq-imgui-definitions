@@ -366,10 +366,38 @@ function ImGui.SliderFloat2(...) end
 function ImGui.SliderFloat3(...) end
 function ImGui.SliderFloat4(...) end
 function ImGui.SliderAngle(...) end
-function ImGui.SliderInt(...) end
-function ImGui.SliderInt2(...) end
-function ImGui.SliderInt3(...) end
-function ImGui.SliderInt4(...) end
+
+---@param label string
+---@param v integer
+---@param v_min integer
+---@param v_max integer
+---@param format? string
+---@return integer value, boolean selected
+function ImGui.SliderInt(label, v, v_min, v_max, format) end
+
+
+---@param label string
+---@param v table
+---@param v_min integer
+---@param v_max integer
+---@return integer[] values, boolean selected
+function ImGui.SliderInt2(label, v, v_min, v_max) end
+
+---@param label string
+---@param v table
+---@param v_min integer
+---@param v_max integer
+---@return integer[] values, boolean selected
+function ImGui.SliderInt3(label, v, v_min, v_max) end
+
+---@param label string
+---@param v table
+---@param v_min integer
+---@param v_max integer
+---@return integer[] values, boolean selected
+function ImGui.SliderInt4(label, v, v_min, v_max) end
+
+
 function ImGui.VSliderFloat(...) end
 function ImGui.VSliderInt(...) end
 
