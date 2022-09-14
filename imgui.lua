@@ -555,22 +555,56 @@ function ImGui.SetClipboardText(...) end
 ---@return ImGuiStyle
 function ImGui.GetStyle() end
 
-function ImGui.Register(...) end
+---@param name string
+---@param render fun()
+function ImGui.Register(name, render) end
 
 --- Tables
 ---@param name string
 ---@param columnsCount integer
 ---@param tableFlags? ImGuiTableFlags
----@param outerSize? ImVec2
----@param innerWidth? number
 ---@return boolean
 function ImGui.BeginTable(name, columnsCount, tableFlags, outerSize, innerWidth) end
+
+---@param name string
+---@param columnsCount integer
+---@param tableFlags ImGuiTableFlags
+---@param outer_sizeX number
+---@param outer_sizeY number
+---@param innerWidth? number
+---@return boolean
+function ImGui.BeginTable(name, columnsCount, tableFlags, outer_sizeX, outer_sizeY, innerWidth) end
+
 function ImGui.EndTable() end
-function ImGui.TableSetupColumn(...) end
-function ImGui.TableSetBgColor(...) end
-function ImGui.TableSetupScrollFreeze(...) end
-function ImGui.TableSetColumnIndex(...) end
+
+---@param label string
+---@param flags? ImGuiTableColumnFlags
+---@param init_width_or_weight? number
+---@param user_id? integer
+function ImGui.TableSetupColumn(label, flags, init_width_or_weight, user_id)  end
+
+---@param bg_target integer
+---@param colR number
+---@param colG number
+---@param colB number
+---@param colA number
+---@param column_n? integer
+function ImGui.TableSetBgColor(bg_target, colR, colG, colB, colA, column_n) end
+
+---@param cols integer
+---@param rows integer
+function ImGui.TableSetupScrollFreeze(cols, rows) end
+
+---@param column_n integer
+---@return boolean
+function ImGui.TableSetColumnIndex(column_n) end
+
 function ImGui.TableGetSortSpecs() end
+
 function ImGui.TableHeadersRow() end
-function ImGui.TableNextRow() end
+
+---@param row_flags? integer
+---@param min_row_height? number
+function ImGui.TableNextRow(row_flags, min_row_height) end
+
 function ImGui.TableNextColumn() end
