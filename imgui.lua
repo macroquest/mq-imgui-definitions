@@ -206,8 +206,9 @@ function ImGui.NewLine() end
 
 function ImGui.Spacing() end
 
----@param imVec2 ImVec2
-function ImGui.Dummy(imVec2) end
+---@param sizeX number
+---@param sizeY number
+function ImGui.Dummy(sizeX, sizeY) end
 
 ---@param indentW? number
 function ImGui.Indent(indentW) end
@@ -227,8 +228,9 @@ function ImGui.GetCursorPosX() end
 ---@return number
 function ImGui.GetCursorPosY() end
 
----@param imVec2 ImVec2
-function ImGui.SetCursorPos(imVec2) end
+---@param localX number
+---@param localY number
+function ImGui.SetCursorPos(localX, localY) end
 
 ---@param localX number
 function ImGui.SetCursorPosX(localX) end
@@ -272,27 +274,81 @@ function ImGui.LabelText(label, text) end
 function ImGui.BulletText(...) end
 
 --- Widgets: Main
-function ImGui.Button(...) end
-function ImGui.SmallButton(...) end
-function ImGui.InvisibleButton(...) end
-function ImGui.ArrowButton(...) end
-function ImGui.Checkbox(...) end
+
+---@param label string
+function ImGui.Button(label) end
+
+---@param label string
+---@param sizeX number
+---@param sizeY number
+function ImGui.Button(label, sizeX, sizeY) end
+
+---@param label string
+function ImGui.SmallButton(label) end
+
+---@param label string
+---@param sizeX number
+---@param sizeY number
+function ImGui.InvisibleButton(label, sizeX, sizeY) end
+
+---@param label string
+---@param imGuiDir ImGuiDir
+function ImGui.ArrowButton(label, imGuiDir) end
+
+---@param label string
+---@param disable_indent boolean
+---@return boolean disable_indent, boolean pressed
+function ImGui.Checkbox(label, disable_indent) end
 
 ---@generic T
 ---@param label string
 ---@param flags T
 ---@param flags_value T
----@return T, boolean
+---@return T flags, boolean pressed
 function ImGui.CheckboxFlags(label, flags, flags_value) end
 
-function ImGui.RadioButton(...) end
-function ImGui.ProgressBar(...) end
+---@param label string
+---@param active boolean
+---@return boolean active
+function ImGui.RadioButton(label, active) end
+
+---@param label string
+---@param v integer
+---@param vButton integer
+---@return integer v, boolean active
+function ImGui.RadioButton(label,v, vButton) end
+
+---@param fraction number
+function ImGui.ProgressBar(fraction) end
+
+---@param fraction number
+---@param sizeX number
+---@param sizeY number
+---@param overlay? string   
+function ImGui.ProgressBar(fraction, sizeX, sizeY, overlay) end
+
 function ImGui.Bullet() end
 
 --- Widgets: Combo Box
-function ImGui.BeginCombo(...) end
+
+---@param label string
+---@param previewValue string
+---@param flags ImGuiComboFlags
+function ImGui.BeginCombo(label, previewValue, flags) end
 function ImGui.EndCombo() end
-function ImGui.Combo(...) end
+
+---@param label string
+---@param currentItem integer
+---@param items table
+---@param itemsCount integer
+---@param popupMaxHeightInItems? integer
+function ImGui.Combo(label, currentItem, items, itemsCount, popupMaxHeightInItems) end
+
+---@param label string
+---@param currentItem integer
+---@param itemsSeparatedByZeros string
+---@param popupMaxHeightInItems? integer
+function ImGui.Combo(label, currentItem, itemsSeparatedByZeros, popupMaxHeightInItems) end
 
 --- Widgets: Drags
 function ImGui.DragFloat(...) end
@@ -403,8 +459,11 @@ function ImGui.GetColumnsCount() end
 --- Tab Bars, Tabs
 function ImGui.BeginTabBar(...) end
 function ImGui.EndTabBar() end
-function ImGui.BeginTabItem() end
+
+---@param header string
+function ImGui.BeginTabItem(header) end
 function ImGui.EndTabItem() end
+
 function ImGui.SetTabItemClosed(...) end
 
 --- Docking
