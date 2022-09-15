@@ -134,6 +134,13 @@ function ImGui.PopFont() end
 ---@param col integer
 function ImGui.PushStyleColor(imGuiCol, col) end
 
+---@param imGuiCol ImGuiCol
+---@param colR number
+---@param colG number
+---@param colB number
+---@param colA number
+function ImGui.PushStyleColor(imGuiCol, colR, colG, colB, colA) end
+
 ---@param count? integer
 function ImGui.PopStyleColor(count) end
 
@@ -199,8 +206,9 @@ function ImGui.NewLine() end
 
 function ImGui.Spacing() end
 
----@param imVec2 ImVec2
-function ImGui.Dummy(imVec2) end
+---@param sizeX number
+---@param sizeY number
+function ImGui.Dummy(sizeX, sizeY) end
 
 ---@param indentW? number
 function ImGui.Indent(indentW) end
@@ -220,8 +228,9 @@ function ImGui.GetCursorPosX() end
 ---@return number
 function ImGui.GetCursorPosY() end
 
----@param imVec2 ImVec2
-function ImGui.SetCursorPos(imVec2) end
+---@param localX number
+---@param localY number
+function ImGui.SetCursorPos(localX, localY) end
 
 ---@param localX number
 function ImGui.SetCursorPosX(localX) end
@@ -265,27 +274,81 @@ function ImGui.LabelText(label, text) end
 function ImGui.BulletText(...) end
 
 --- Widgets: Main
-function ImGui.Button(...) end
-function ImGui.SmallButton(...) end
-function ImGui.InvisibleButton(...) end
-function ImGui.ArrowButton(...) end
-function ImGui.Checkbox(...) end
+
+---@param label string
+function ImGui.Button(label) end
+
+---@param label string
+---@param sizeX number
+---@param sizeY number
+function ImGui.Button(label, sizeX, sizeY) end
+
+---@param label string
+function ImGui.SmallButton(label) end
+
+---@param label string
+---@param sizeX number
+---@param sizeY number
+function ImGui.InvisibleButton(label, sizeX, sizeY) end
+
+---@param label string
+---@param imGuiDir ImGuiDir
+function ImGui.ArrowButton(label, imGuiDir) end
+
+---@param label string
+---@param disable_indent boolean
+---@return boolean disable_indent, boolean pressed
+function ImGui.Checkbox(label, disable_indent) end
 
 ---@generic T
 ---@param label string
 ---@param flags T
 ---@param flags_value T
----@return T, boolean
+---@return T flags, boolean pressed
 function ImGui.CheckboxFlags(label, flags, flags_value) end
 
-function ImGui.RadioButton(...) end
-function ImGui.ProgressBar(...) end
+---@param label string
+---@param active boolean
+---@return boolean active
+function ImGui.RadioButton(label, active) end
+
+---@param label string
+---@param v integer
+---@param vButton integer
+---@return integer v, boolean active
+function ImGui.RadioButton(label,v, vButton) end
+
+---@param fraction number
+function ImGui.ProgressBar(fraction) end
+
+---@param fraction number
+---@param sizeX number
+---@param sizeY number
+---@param overlay? string   
+function ImGui.ProgressBar(fraction, sizeX, sizeY, overlay) end
+
 function ImGui.Bullet() end
 
 --- Widgets: Combo Box
-function ImGui.BeginCombo(...) end
+
+---@param label string
+---@param previewValue string
+---@param flags ImGuiComboFlags
+function ImGui.BeginCombo(label, previewValue, flags) end
 function ImGui.EndCombo() end
-function ImGui.Combo(...) end
+
+---@param label string
+---@param currentItem integer
+---@param items table
+---@param itemsCount integer
+---@param popupMaxHeightInItems? integer
+function ImGui.Combo(label, currentItem, items, itemsCount, popupMaxHeightInItems) end
+
+---@param label string
+---@param currentItem integer
+---@param itemsSeparatedByZeros string
+---@param popupMaxHeightInItems? integer
+function ImGui.Combo(label, currentItem, itemsSeparatedByZeros, popupMaxHeightInItems) end
 
 --- Widgets: Drags
 function ImGui.DragFloat(...) end
@@ -303,10 +366,38 @@ function ImGui.SliderFloat2(...) end
 function ImGui.SliderFloat3(...) end
 function ImGui.SliderFloat4(...) end
 function ImGui.SliderAngle(...) end
-function ImGui.SliderInt(...) end
-function ImGui.SliderInt2(...) end
-function ImGui.SliderInt3(...) end
-function ImGui.SliderInt4(...) end
+
+---@param label string
+---@param v integer
+---@param v_min integer
+---@param v_max integer
+---@param format? string
+---@return integer value, boolean selected
+function ImGui.SliderInt(label, v, v_min, v_max, format) end
+
+
+---@param label string
+---@param v table
+---@param v_min integer
+---@param v_max integer
+---@return integer[] values, boolean selected
+function ImGui.SliderInt2(label, v, v_min, v_max) end
+
+---@param label string
+---@param v table
+---@param v_min integer
+---@param v_max integer
+---@return integer[] values, boolean selected
+function ImGui.SliderInt3(label, v, v_min, v_max) end
+
+---@param label string
+---@param v table
+---@param v_min integer
+---@param v_max integer
+---@return integer[] values, boolean selected
+function ImGui.SliderInt4(label, v, v_min, v_max) end
+
+
 function ImGui.VSliderFloat(...) end
 function ImGui.VSliderInt(...) end
 
@@ -396,8 +487,11 @@ function ImGui.GetColumnsCount() end
 --- Tab Bars, Tabs
 function ImGui.BeginTabBar(...) end
 function ImGui.EndTabBar() end
-function ImGui.BeginTabItem() end
+
+---@param header string
+function ImGui.BeginTabItem(header) end
 function ImGui.EndTabItem() end
+
 function ImGui.SetTabItemClosed(...) end
 
 --- Docking
@@ -489,22 +583,56 @@ function ImGui.SetClipboardText(...) end
 ---@return ImGuiStyle
 function ImGui.GetStyle() end
 
-function ImGui.Register(...) end
+---@param name string
+---@param render fun()
+function ImGui.Register(name, render) end
 
 --- Tables
 ---@param name string
 ---@param columnsCount integer
 ---@param tableFlags? ImGuiTableFlags
----@param outerSize? ImVec2
----@param innerWidth? number
 ---@return boolean
 function ImGui.BeginTable(name, columnsCount, tableFlags, outerSize, innerWidth) end
+
+---@param name string
+---@param columnsCount integer
+---@param tableFlags ImGuiTableFlags
+---@param outer_sizeX number
+---@param outer_sizeY number
+---@param innerWidth? number
+---@return boolean
+function ImGui.BeginTable(name, columnsCount, tableFlags, outer_sizeX, outer_sizeY, innerWidth) end
+
 function ImGui.EndTable() end
-function ImGui.TableSetupColumn(...) end
-function ImGui.TableSetBgColor(...) end
-function ImGui.TableSetupScrollFreeze(...) end
-function ImGui.TableSetColumnIndex(...) end
+
+---@param label string
+---@param flags? ImGuiTableColumnFlags
+---@param init_width_or_weight? number
+---@param user_id? integer
+function ImGui.TableSetupColumn(label, flags, init_width_or_weight, user_id)  end
+
+---@param bg_target integer
+---@param colR number
+---@param colG number
+---@param colB number
+---@param colA number
+---@param column_n? integer
+function ImGui.TableSetBgColor(bg_target, colR, colG, colB, colA, column_n) end
+
+---@param cols integer
+---@param rows integer
+function ImGui.TableSetupScrollFreeze(cols, rows) end
+
+---@param column_n integer
+---@return boolean
+function ImGui.TableSetColumnIndex(column_n) end
+
 function ImGui.TableGetSortSpecs() end
+
 function ImGui.TableHeadersRow() end
-function ImGui.TableNextRow() end
+
+---@param row_flags? integer
+---@param min_row_height? number
+function ImGui.TableNextRow(row_flags, min_row_height) end
+
 function ImGui.TableNextColumn() end

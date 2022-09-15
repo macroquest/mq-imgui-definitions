@@ -12,3 +12,6 @@ function ImGuiListClipper.Begin(items_count, items_height) end
 function ImGuiListClipper.End() end
 
 function ImGuiListClipper.Step() end
+
+---@return ImGuiListClipper
+function ImGuiListClipper.new() end
