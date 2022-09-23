@@ -485,7 +485,7 @@ function ImGui.NextColumn() end
 ---@return integer # Column index
 function ImGui.GetColumnIndex() end
 
----@param columnIndex integer
+---@param columnIndex? integer
 ---@return number
 function ImGui.GetColumnWidth(columnIndex) end
 
@@ -493,7 +493,7 @@ function ImGui.GetColumnWidth(columnIndex) end
 ---@param width integer
 function ImGui.SetColumnWidth(columnIndex, width) end
 
----@param columnIndex integer
+---@param columnIndex? integer
 ---@return number 
 function ImGui.GetColumnOffset(columnIndex) end
 
