@@ -238,38 +238,78 @@ function ImGui.SetCursorPosX(localX) end
 ---@param localY number
 function ImGui.SetCursorPosY(localY) end
 
+
+---@return number (x), number (y)
 function ImGui.GetCursorStartPos() end
+
+---@return number (x), number (y)
 function ImGui.GetCursorScreenPos() end
-function ImGui.SetCursorScreenPos(...) end
+
+---@param x number
+---@param y number
+function ImGui.SetCursorScreenPos(x, y) end
+
 function ImGui.AlignTextToFramePadding() end
+
+---@return number
 function ImGui.GetTextLineHeight() end
+
+---@return number
 function ImGui.GetTextLineHeightWithSpacing() end
+
+---@return number
 function ImGui.GetFrameHeight() end
+
+---@return number
 function ImGui.GetFrameHeightWithSpacing() end
 
 --- ID Stack/Scopes
-function ImGui.PushID(...) end
+
+---@param id integer
+function ImGui.PushID(id) end
+
+---@param id string
+function ImGui.PushID(id) end
+
+---@param idBegin string
+---@param idEnd string
+function ImGui.PushID(idBegin, idEnd) end
+
 function ImGui.PopID() end
-function ImGui.GetID(...) end
+
+---@param id string
+---@return integer # id
+function ImGui.GetID(id) end
+
+---@param idBegin string
+---@param idEnd string
+---@return integer # id
+function ImGui.GetID(idBegin, idEnd) end
 
 --- Widgets: Text
 ---@vararg string
 function ImGui.TextUnformatted(...) end
+
 ---@param text string
 function ImGui.Text(text) end
+
 ---@param r number
 ---@param g number
 ---@param b number
 ---@param a number
 ---@param text string
 function ImGui.TextColored(r, g, b, a, text) end
+
 ---@param text string
 function ImGui.TextDisabled(text) end
+
 ---@vararg string
 function ImGui.TextWrapped(...) end
+
 ---@param label string
 ---@param text string
 function ImGui.LabelText(label, text) end
+
 ---@vararg string
 function ImGui.BulletText(...) end
 
@@ -564,11 +604,27 @@ function ImGui.BeginChildFrame(...) end
 function ImGui.EndChildFrame() end
 
 --- Text Utilities
-function ImGui.CalcTextSize(...) end
+
+---@param text string
+---@param textEnd? string
+---@param hideTextAfterDoubleDash? boolean
+---@param wrapWith? number
+---@return number x, number y
+function ImGui.CalcTextSize(text, textEnd, hideTextAfterDoubleDash, wrapWith) end
 
 --- Color Utilities
-function ImGui.ColorConvertRGBtoHSV(...) end
-function ImGui.ColorConvertHSVtoRGB(...) end
+
+---@param r number
+---@param g number
+---@param b number
+---@return number h, number s, number v
+function ImGui.ColorConvertRGBtoHSV(r, g , b) end
+
+---@param h number
+---@param s number
+---@param v number
+---@return number r, number g, number b
+function ImGui.ColorConvertHSVtoRGB(h, s, v) end
 
 --- Inputs Utilities: Keyboard
 function ImGui.GetKeyIndex(...) end
