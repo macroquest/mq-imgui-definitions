@@ -253,7 +253,7 @@ function ImGui.PopID() end
 function ImGui.GetID(...) end
 
 --- Widgets: Text
----@param ... string
+---@vararg string
 function ImGui.TextUnformatted(...) end
 ---@param text string
 function ImGui.Text(text) end
@@ -265,12 +265,12 @@ function ImGui.Text(text) end
 function ImGui.TextColored(r, g, b, a, text) end
 ---@param text string
 function ImGui.TextDisabled(text) end
----@param ... string
+---@vararg string
 function ImGui.TextWrapped(...) end
 ---@param label string
 ---@param text string
 function ImGui.LabelText(label, text) end
----@param ... string
+---@vararg string
 function ImGui.BulletText(...) end
 
 --- Widgets: Main
@@ -475,13 +475,33 @@ function ImGui.BeginPopupContextVoid(...) end
 function ImGui.IsPopupOpen(...) end
 
 --- Columns
-function ImGui.Columns(...) end
+---@param count? integer
+---@param text? string
+---@param border? boolean
+function ImGui.Columns(count, text, border) end
+
 function ImGui.NextColumn() end
+
+---@return integer # Column index
 function ImGui.GetColumnIndex() end
-function ImGui.GetColumnWidth(...) end
-function ImGui.SetColumnWidth(...) end
-function ImGui.GetColumnOffset(...) end
-function ImGui.SetColumnOffset(...) end
+
+---@param columnIndex integer
+---@return number
+function ImGui.GetColumnWidth(columnIndex) end
+
+---@param columnIndex integer
+---@param width integer
+function ImGui.SetColumnWidth(columnIndex, width) end
+
+---@param columnIndex integer
+---@return number 
+function ImGui.GetColumnOffset(columnIndex) end
+
+---@param columnIndex integer
+---@param offset integer
+function ImGui.SetColumnOffset(columnIndex, offset) end
+
+---@return integer
 function ImGui.GetColumnsCount() end
 
 --- Tab Bars, Tabs
