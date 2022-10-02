@@ -373,7 +373,7 @@ function ImGui.Bullet() end
 
 ---@param label string
 ---@param previewValue string
----@param flags ImGuiComboFlags
+---@param flags? ImGuiComboFlags
 function ImGui.BeginCombo(label, previewValue, flags) end
 function ImGui.EndCombo() end
 
@@ -644,6 +644,8 @@ function ImGui.IsAnyMouseDown() end
 function ImGui.GetMousePos() end
 function ImGui.GetMousePosOnOpeningCurrentPopup() end
 function ImGui.IsMouseDragging(...) end
+
+---@return number, number
 function ImGui.GetMouseDragDelta(...) end
 function ImGui.ResetMouseDragDelta(...) end
 function ImGui.GetMouseCursor() end
@@ -712,3 +714,25 @@ function ImGui.TableHeadersRow() end
 function ImGui.TableNextRow(row_flags, min_row_height) end
 
 function ImGui.TableNextColumn() end
+
+---@return boolean
+function ImGui.BeginDragDropSource() end
+
+---@param label string
+---@param payload any
+function ImGui.SetDragDropPayload(label, payload) end
+
+function ImGui.EndDragDropSource() end
+
+---@return boolean
+function ImGui.BeginDragDropTarget() end
+
+---@return userdata #LuaImGuiPayload
+function ImGui.AcceptDragDropPayload(label) end
+
+function ImGui.EndDragDropTarget() end
+
+---@param texture userdata #CTextureAnimation
+---@param width number
+---@param height number
+function ImGui.DrawTextureAnimation(texture, width, height) end
