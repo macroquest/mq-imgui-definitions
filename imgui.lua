@@ -336,9 +336,9 @@ function ImGui.InvisibleButton(label, sizeX, sizeY) end
 function ImGui.ArrowButton(label, imGuiDir) end
 
 ---@param label string
----@param disable_indent boolean
----@return boolean disable_indent, boolean pressed
-function ImGui.Checkbox(label, disable_indent) end
+---@param value boolean
+---@return boolean value, boolean pressed
+function ImGui.Checkbox(label, value) end
 
 ---@generic T
 ---@param label string
