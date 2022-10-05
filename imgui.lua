@@ -336,9 +336,9 @@ function ImGui.InvisibleButton(label, sizeX, sizeY) end
 function ImGui.ArrowButton(label, imGuiDir) end
 
 ---@param label string
----@param disable_indent boolean
----@return boolean disable_indent, boolean pressed
-function ImGui.Checkbox(label, disable_indent) end
+---@param value boolean
+---@return boolean value, boolean pressed
+function ImGui.Checkbox(label, value) end
 
 ---@generic T
 ---@param label string
@@ -391,21 +391,132 @@ function ImGui.Combo(label, currentItem, items, itemsCount, popupMaxHeightInItem
 function ImGui.Combo(label, currentItem, itemsSeparatedByZeros, popupMaxHeightInItems) end
 
 --- Widgets: Drags
-function ImGui.DragFloat(...) end
-function ImGui.DragFloat2(...) end
-function ImGui.DragFloat3(...) end
-function ImGui.DragFloat4(...) end
-function ImGui.DragInt(...) end
-function ImGui.DragInt2(...) end
-function ImGui.DragInt3(...) end
-function ImGui.DragInt4(...) end
+
+---@param label string
+---@param value number
+---@param value_speed? number
+---@param value_min? number
+---@param value_max? number
+---@param format? string
+---@param power? number
+---@return number # value, bool # used
+function ImGui.DragFloat(label, value, value_speed, value_min, value_max, format, power) end
+
+---@param label string
+---@param value number
+---@param value_speed? number
+---@param value_min? number
+---@param value_max? number
+---@param format? string
+---@param power? number
+---@return number[] # value, bool # used
+function ImGui.DragFloat2(label, value, value_speed, value_min, value_max, format, power) end
+
+---@param label string
+---@param value number
+---@param value_speed? number
+---@param value_min? number
+---@param value_max? number
+---@param format? string
+---@param power? number
+---@return number[] # value, bool # used
+function ImGui.DragFloat3(label, value, value_speed, value_min, value_max, format, power) end
+
+---@param label string
+---@param value number
+---@param value_speed? number
+---@param value_min? number
+---@param value_max? number
+---@param format? string
+---@param power? number
+---@return number[] # value, bool # used
+function ImGui.DragFloat4(label, value, value_speed, value_min, value_max, format, power) end
+
+---@param label string
+---@param value integer
+---@param value_speed? number
+---@param value_min? integer
+---@param value_max? integer
+---@param format? string
+---@return integer # value, bool # used
+function ImGui.DragInt(label, value, value_speed, value_min, value_max, format) end
+
+---@param label string
+---@param value integer
+---@param value_speed? number
+---@param value_min? integer
+---@param value_max? integer
+---@param format? string
+---@return integer[] # value, bool # used
+function ImGui.DragInt2(label, value, value_speed, value_min, value_max, format) end
+
+---@param label string
+---@param value integer
+---@param value_speed? number
+---@param value_min? integer
+---@param value_max? integer
+---@param format? string
+---@return integer[] # value, bool # used
+function ImGui.DragInt3(label, value, value_speed, value_min, value_max, format) end
+
+---@param label string
+---@param value integer
+---@param value_speed? number
+---@param value_min? integer
+---@param value_max? integer
+---@param format? string
+---@return integer[] # value, bool # used
+function ImGui.DragInt4(label, value, value_speed, value_min, value_max, format) end
 
 --- Widgets: Sliders
-function ImGui.SliderFloat(...) end
-function ImGui.SliderFloat2(...) end
-function ImGui.SliderFloat3(...) end
-function ImGui.SliderFloat4(...) end
-function ImGui.SliderAngle(...) end
+
+---@param label string
+---@param value number
+---@param value_speed? number
+---@param value_min? number
+---@param value_max? number
+---@param format? string
+---@param power? number
+---@return number # value, bool # used
+function ImGui.SliderFloat(label, value, value_speed, value_min, value_max, format, power) end
+
+---@param label string
+---@param value number
+---@param value_speed? number
+---@param value_min? number
+---@param value_max? number
+---@param format? string
+---@param power? number
+---@return number[] # value, bool # used
+function ImGui.SliderFloat2(label, value, value_speed, value_min, value_max, format, power) end
+
+---@param label string
+---@param value number
+---@param value_speed? number
+---@param value_min? number
+---@param value_max? number
+---@param format? string
+---@param power? number
+---@return number[] # value, bool # used
+function ImGui.SliderFloat3(label, value, value_speed, value_min, value_max, format, power) end
+
+---@param label string
+---@param value number
+---@param value_speed? number
+---@param value_min? number
+---@param value_max? number
+---@param format? string
+---@param power? number
+---@return number[] # value, bool # used
+function ImGui.SliderFloat4(label, value, value_speed, value_min, value_max, format, power) end
+
+---@param label string
+---@param v_rad number
+---@param v_degrees_min number
+---@param v_degrees_max number
+---@param format string
+---@return number # v_rad, bool # used
+function ImGui.SliderAngle(label, v_rad, v_degrees_min, v_degrees_max, format) end
 
 ---@param label string
 ---@param v integer
@@ -420,34 +531,67 @@ function ImGui.SliderInt(label, v, v_min, v_max, format) end
 ---@param v table
 ---@param v_min integer
 ---@param v_max integer
+---@param format? string
 ---@return integer[] values, boolean selected
-function ImGui.SliderInt2(label, v, v_min, v_max) end
+function ImGui.SliderInt2(label, v, v_min, v_max, format) end
 
 ---@param label string
 ---@param v table
 ---@param v_min integer
 ---@param v_max integer
+---@param format? string
 ---@return integer[] values, boolean selected
-function ImGui.SliderInt3(label, v, v_min, v_max) end
+function ImGui.SliderInt3(label, v, v_min, v_max, format) end
 
 ---@param label string
 ---@param v table
 ---@param v_min integer
 ---@param v_max integer
+---@param format? string
 ---@return integer[] values, boolean selected
-function ImGui.SliderInt4(label, v, v_min, v_max) end
+function ImGui.SliderInt4(label, v, v_min, v_max, format) end
 
+---@param label string
+---@param size_x number
+---@param size_y number
+---@param value number
+---@param value_min number
+---@param value_max number
+---@param format? string
+---@param power? number
+---@return number # value, bool # used
+function ImGui.VSliderFloat(label, size_x, size_y, value, value_min, value_max, format, power) end
 
-function ImGui.VSliderFloat(...) end
-function ImGui.VSliderInt(...) end
+---@param label string
+---@param size_x number
+---@param size_y number
+---@param value integer
+---@param value_min integer
+---@param value_max integer
+---@param format? string
+---@return integer # value, bool # used
+function ImGui.VSliderInt(label, size_x, size_y, value, value_min, value_max, format) end
 
 --- Widgets: Input with Keyboard
-function ImGui.InputText(...) end
-function ImGui.InputTextMultiline(...) end
+
+---@param label string
+---@param text string
+---@param imGuiInputTextFlags? ImGuiInputTextFlags
+--- @return string text, boolean selected
+function ImGui.InputText(label, text, imGuiInputTextFlags) end
+
+---@param label string
+---@param text string
+---@param size_x number
+---@param size_y number
+---@param imGuiInputTextFlags? ImGuiInputTextFlags
+--- @return string text, boolean selected
+function ImGui.InputTextMultiline(label, text, size_x, size_y, imGuiInputTextFlags) end
+
 --- @param label string
 --- @param hint string
 --- @param text string
---- @param imGuiInputTextFlags? integer
+--- @param imGuiInputTextFlags? ImGuiInputTextFlags
 --- @return string text, boolean selected
 function ImGui.InputTextWithHint(label, hint, text, imGuiInputTextFlags) end
 function ImGui.InputFloat(...) end
