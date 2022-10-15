@@ -598,18 +598,18 @@ function ImGui.BeginCombo(label, previewValue, flags) end
 function ImGui.EndCombo() end
 
 ---@param label string
----@param currentItem number
----@param items string[]
----@param itemsCount number
----@param popupMaxHeightInItems? number
----@return number currentItem, boolean clicked
+---@param currentItem integer
+---@param items table
+---@param itemsCount integer
+---@param popupMaxHeightInItems? integer
+---@return integer
 function ImGui.Combo(label, currentItem, items, itemsCount, popupMaxHeightInItems) end
 
 ---@param label string
 ---@param currentItem number
 ---@param itemsSeparatedByZeros string
----@param popupMaxHeightInItems? number
----@return number
+---@param popupMaxHeightInItems? integer
+---@return integer
 function ImGui.Combo(label, currentItem, itemsSeparatedByZeros, popupMaxHeightInItems) end
 
 ---@param label string
