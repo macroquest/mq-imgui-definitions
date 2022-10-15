@@ -1,7 +1,7 @@
 ---@meta
 
 --- Macroquest ImGui Lua Binding
---- @class ImGui
+---@class ImGui
 ImGui = {}
 
 --- Windows
@@ -882,3 +882,12 @@ function ImGui.EndDragDropTarget() end
 ---@param width number
 ---@param height number
 function ImGui.DrawTextureAnimation(texture, width, height) end
+
+---@class ImGuiSelectableFlags
+---@field public None boolean
+---@field public DontClosePopups boolean # Clicking this don't close parent popup window
+---@field public SpanAllColumns boolean # Selectable frame can span all columns (text will still fit in the current column)
+---@field public AllowDoubleClick boolean # Generate press events on double clicks
+---@field public Disabled boolean # Cannot be selected, display grayed out text
+---@field public AllowItemOverlap boolean # (WIP) Hit testing to allow subsquent widgets to overlap this one
+ImGuiSelectableFlags = {}
