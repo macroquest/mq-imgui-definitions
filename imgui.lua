@@ -382,12 +382,14 @@ function ImGui.EndCombo() end
 ---@param items table
 ---@param itemsCount integer
 ---@param popupMaxHeightInItems? integer
+---@return integer
 function ImGui.Combo(label, currentItem, items, itemsCount, popupMaxHeightInItems) end
 
 ---@param label string
 ---@param currentItem integer
 ---@param itemsSeparatedByZeros string
 ---@param popupMaxHeightInItems? integer
+---@return integer
 function ImGui.Combo(label, currentItem, itemsSeparatedByZeros, popupMaxHeightInItems) end
 
 --- Widgets: Drags
