@@ -503,23 +503,21 @@ function ImGui.Button(label, size) end
 ---@param label string
 ---@param sizeX number
 ---@param sizeY number
----@return boolean clicked
+---@return boolean # clicked
 function ImGui.Button(label, sizeX, sizeY) end
 
 ---@param label string
----@return boolean clicked
 function ImGui.SmallButton(label) end
 
 ---@param label string
 ---@param sizeX number
 ---@param sizeY number
----@return boolean clicked
 function ImGui.InvisibleButton(label, sizeX, sizeY) end
 
 ---@param label string
 ---@param size ImVec2
 ---@param flags? ImGuiButtonFlags
----@return boolean
+---@return boolean # clicked
 function ImGui.InvisibleButton(label, size, flags) end
 
 ---@param label string
