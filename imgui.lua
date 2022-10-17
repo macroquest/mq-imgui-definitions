@@ -316,23 +316,28 @@ function ImGui.BulletText(...) end
 --- Widgets: Main
 
 ---@param label string
+---@return boolean # clicked
 function ImGui.Button(label) end
 
 ---@param label string
 ---@param sizeX number
 ---@param sizeY number
+---@return boolean # clicked
 function ImGui.Button(label, sizeX, sizeY) end
 
 ---@param label string
+---@return boolean # clicked
 function ImGui.SmallButton(label) end
 
 ---@param label string
 ---@param sizeX number
 ---@param sizeY number
+---@return boolean # clicked
 function ImGui.InvisibleButton(label, sizeX, sizeY) end
 
 ---@param label string
 ---@param imGuiDir ImGuiDir
+---@return boolean # clicked
 function ImGui.ArrowButton(label, imGuiDir) end
 
 ---@param label string
