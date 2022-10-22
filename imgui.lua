@@ -316,23 +316,28 @@ function ImGui.BulletText(...) end
 --- Widgets: Main
 
 ---@param label string
+---@return boolean # clicked
 function ImGui.Button(label) end
 
 ---@param label string
 ---@param sizeX number
 ---@param sizeY number
+---@return boolean # clicked
 function ImGui.Button(label, sizeX, sizeY) end
 
 ---@param label string
+---@return boolean # clicked
 function ImGui.SmallButton(label) end
 
 ---@param label string
 ---@param sizeX number
 ---@param sizeY number
+---@return boolean # clicked
 function ImGui.InvisibleButton(label, sizeX, sizeY) end
 
 ---@param label string
 ---@param imGuiDir ImGuiDir
+---@return boolean # clicked
 function ImGui.ArrowButton(label, imGuiDir) end
 
 ---@param label string
@@ -382,12 +387,14 @@ function ImGui.EndCombo() end
 ---@param items table
 ---@param itemsCount integer
 ---@param popupMaxHeightInItems? integer
+---@return integer
 function ImGui.Combo(label, currentItem, items, itemsCount, popupMaxHeightInItems) end
 
 ---@param label string
 ---@param currentItem integer
 ---@param itemsSeparatedByZeros string
 ---@param popupMaxHeightInItems? integer
+---@return integer
 function ImGui.Combo(label, currentItem, itemsSeparatedByZeros, popupMaxHeightInItems) end
 
 --- Widgets: Drags
