@@ -1369,6 +1369,9 @@ function ImGui.BeginTable(name, columnsCount, tableFlags, outer_sizeX, outer_siz
 
 function ImGui.EndTable() end
 
+---@return integer # Return hovered column. return -1 when table is not hovered. return columns_count if the unused space at the right of visible columns is hovered.
+function ImGui.TableGetHoveredColumn() end
+
 ---@param label string
 ---@param flags? ImGuiTableColumnFlags
 ---@param init_width_or_weight? number
