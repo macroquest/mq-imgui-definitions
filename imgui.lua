@@ -632,12 +632,32 @@ function ImGui.SetNextItemOpen(...) end
 function ImGui.Selectable(...) end
 
 --- Widgets: List Boxes
-function ImGui.ListBox(...) end
-function ImGui.ListBoxHeader(...) end
+---@param label string
+---@param current_item integer
+---@param items table
+---@param items_count integer
+---@param height_in_items? integer
+---@return integer current_item, boolean clicked
+function ImGui.ListBox(label, current_item, items, items_count, height_in_items) end
+
+---@param label string
+---@param size_x number
+---@param size_y number
+function ImGui.ListBoxHeader(label, size_x, size_y) end
+
+
+---@param label string
+---@param items_count integer
+---@param height_in_items? integer
+function ImGui.ListBoxHeader(label, items_count, height_in_items) end
+
 function ImGui.ListBoxFooter() end
 
 --- Widgets: Value() Helpers
-function ImGui.Value(...) end
+---@param text string
+---@param value boolean|number
+---@param float_format? string # format only available with float
+function ImGui.Value(text, value, float_format) end
 
 --- Widgets: Menus
 function ImGui.BeginMenuBar() end
