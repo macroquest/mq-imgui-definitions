@@ -41,6 +41,4 @@
 ---@field AntiAliasedFill boolean # Enable anti-aliased edges around filled shapes (rounded rectangles, circles, etc.). Disable if you are really tight on CPU/GPU. Latched at the beginning of the frame (copied to ImDrawList).
 ---@field CurveTessellationTol number # Tessellation tolerance when using PathBezierCurveTo() without a specific number of segments. Decrease for highly tessellated curves (higher quality, more polygons), increase to reduce quality.
 ---@field CircleTessellationMaxError number # Maximum error (in pixels) allowed when using AddCircle()/AddCircleFilled() or drawing rounded corner rectangles with no explicit segment count specified. Decrease for higher quality but more geometry.
--- ---@field Colors[ImGuiCol_COUNT] ImVec4;
-
--- ([a-zA-Z0-9]*)\s*([a-zA-Z0-9]*);\s*//(.*)
+---@field Colors ImVec4[];
