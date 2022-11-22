@@ -1,17 +1,18 @@
 ---@meta
 
 ---@class ImGuiListClipper
----@field public DisplayStart integer
----@field public DisplayEnd integer
-ImGuiListClipper = nil
+---@field public DisplayStart number
+---@field public DisplayEnd number
+ImGuiListClipper = {}
 
----@param items_count integer
----@param items_height? number
-function ImGuiListClipper.Begin(items_count, items_height) end
+---@param itemsCount number
+---@param itemsHeight? number
+function ImGuiListClipper:Begin(itemsCount, itemsHeight) end
 
-function ImGuiListClipper.End() end
+function ImGuiListClipper:End() end
 
-function ImGuiListClipper.Step() end
+---@return boolean
+function ImGuiListClipper:Step() end
 
 ---@return ImGuiListClipper
 function ImGuiListClipper.new() end
