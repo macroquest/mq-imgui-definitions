@@ -7,9 +7,69 @@ ImGui = {}
 ---@alias ImU32 number  Represents a color
 ---@alias ImTextureID number  Represents a texture
 
+--
+-- Main
+--
+
 ---@return ImGuiIO
 function ImGui.GetIO() end
 
+---@return ImGuiStyle
+function ImGui.GetStyle() end
+
+--
+-- Demo, Debug, Information
+--
+
+---@param show boolean
+---@return boolean show
+function ImGui.ShowDemoWindow(show) end
+function ImGui.ShowDemoWindow() end
+
+---@param show boolean
+---@return boolean show
+function ImGui.ShowMetricsWindow(show) end
+function ImGui.ShowMetricsWindow() end
+
+---@param show boolean
+---@return boolean show
+function ImGui.ShowAboutWindow(show) end
+function ImGui.ShowAboutWindow() end
+
+---@param style ImGuiStyle
+function ImGui.ShowStyleEditor(style) end
+function ImGui.ShowStyleEditor() end
+
+---@param label string
+---@return boolean
+function ImGui.ShowStyleSelector(label) end
+
+---@param label string
+function ImGui.ShowFontSelector(label) end
+
+function ImGui.ShowUserGuide() end
+
+---@return string version
+function ImGui.GetVersion() end
+
+
+--
+-- Styles
+--
+
+---@return ImGuiStyle
+function ImGui.StyleColorsDark() end
+
+---@return ImGuiStyle
+function ImGui.StyleColorsLight() end
+
+---@return ImGuiStyle
+function ImGui.StyleColorsClassic() end
+
+
+--
+--
+--
 
 ---@param r number
 ---@param g number
@@ -21,13 +81,13 @@ function IM_COL32(r, g, b, a) end
 --- Windows
 
 ---@param name string
----@return boolean shouldDraw
+---@return boolean draw
 function ImGui.Begin(name) end
 
 ---@param name string
----@param open boolean
+---@param open boolean|nil
 ---@param flags? ImGuiWindowFlags
----@return boolean open, boolean shouldDraw
+---@return boolean open, boolean draw
 function ImGui.Begin(name, open, flags) end
 
 function ImGui.End() end
@@ -45,10 +105,10 @@ function ImGui.EndChild() end
 
 --- Window Utilities
 
----@return boolean isAppearing
+---@return boolean
 function ImGui.IsWindowAppearing() end
 
----@return boolean isCollapsed
+---@return boolean
 function ImGui.IsWindowCollapsed() end
 
 ---@param flags? ImGuiFocusedFlags
@@ -62,38 +122,50 @@ function ImGui.IsWindowHovered(flags) end
 ---@return ImDrawList
 function ImGui.GetWindowDrawList() end
 
----@return number dpiScale
+---@return number
 function ImGui.GetWindowDpiScale() end
 
 ---@return number posX, number posY
 function ImGui.GetWindowPos() end
 
----@return ImVec2 pos
+---@return ImVec2
 function ImGui.GetWindowPosVec() end
 
----@return number sizeX, number sizeY
+---@return number width, number height
 function ImGui.GetWindowSize() end
 
----@return ImVec2 size
+---@return ImVec2
 function ImGui.GetWindowSizeVec() end
 
----@return number width
+---@return number
 function ImGui.GetWindowWidth() end
 
----@return number height
+---@return number
 function ImGui.GetWindowHeight() end
+
+---@return ImGuiViewport
+function ImGui.GetWindowViewport() end
 
 ---@param posX number
 ---@param posY number
----@param imGuiCond? ImGuiCond
+---@param cond? ImGuiCond
 ---@param pivotX? number
 ---@param pivotY? number
-function ImGui.SetNextWindowPos(posX, posY, imGuiCond, pivotX, pivotY) end
+function ImGui.SetNextWindowPos(posX, posY, cond, pivotX, pivotY) end
+
+---@param pos ImVec2
+---@param cond? ImGuiCond
+---@param pivot? ImVec2
+function ImGui.SetNextWindowPos(pos, cond, pivot) end
 
 ---@param sizeX number
 ---@param sizeY number
----@param imGuiCond? ImGuiCond
-function ImGui.SetNextWindowSize(sizeX, sizeY, imGuiCond) end
+---@param cond? ImGuiCond
+function ImGui.SetNextWindowSize(sizeX, sizeY, cond) end
+
+---@param size ImVec2
+---@param cond? ImGuiCond
+function ImGui.SetNextWindowSize(size, cond) end
 
 ---@param minX number
 ---@param minY number
@@ -367,8 +439,14 @@ function ImGui.GetID(id) end
 ---@param text string
 function ImGui.TextUnformatted(text) end
 
+---convenience version of ImGui.Text which wraps string.format
+---@param format string
+---@vararg any
+function ImGui.Text(format, ...) end
+
 ---@param text string
 function ImGui.Text(text) end
+
 
 ---@param r number
 ---@param g number
@@ -760,11 +838,28 @@ function ImGui.TreeNode(label) end
 function ImGui.TreeNode(strId, label) end
 
 function ImGui.TreeNodeEx(...) end
-function ImGui.TreePush(...) end
+
+---@param id? any
+function ImGui.TreePush(id) end
+
 function ImGui.TreePop() end
+
+---@return number
 function ImGui.GetTreeNodeToLabelSpacing() end
-function ImGui.CollapsingHeader(...) end
-function ImGui.SetNextItemOpen(...) end
+
+---@param label string
+---@param flags? ImGuiTreeNodeFlags
+function ImGui.CollapsingHeader(label, flags) end
+
+---@param label string
+---@param open boolean|nil
+---@param flags? ImGuiTreeNodeFlags
+---@return boolean open, boolean show
+function ImGui.CollapsingHeader(label, open, flags) end
+
+---@param isOpen boolean
+---@param cond? ImGuiCond
+function ImGui.SetNextItemOpen(isOpen, cond) end
 
 --- Widgets: Selectables
 
@@ -804,16 +899,27 @@ function ImGui.ListBoxFooter() end
 function ImGui.Value(...) end
 
 --- Widgets: Menus
+
+---@return boolean
 function ImGui.BeginMenuBar() end
+
 function ImGui.EndMenuBar() end
+
+---@return boolean
 function ImGui.BeginMainMenuBar() end
+
 function ImGui.EndMainMenuBar() end
-function ImGui.BeginMenu(...) end
+
+---@param label string
+---@param enabled? boolean
+---@return boolean
+function ImGui.BeginMenu(label, enabled) end
+
 function ImGui.EndMenu() end
 
 ---@param label string
----@param shortcut string|nil
----@param selected? boolean @if the menu item is activated, this value will be toggled and returned back as 2nd param
+---@param shortcut? string|nil
+---@param selected? boolean|nil @if the menu item is activated, this value will be toggled and returned back as 2nd param
 ---@param enabled? boolean
 ---@return boolean activated, boolean selected
 function ImGui.MenuItem(label, shortcut, selected, enabled) end
@@ -927,6 +1033,13 @@ function ImGui.LogFinish() end
 function ImGui.LogButtons() end
 function ImGui.LogText(...) end
 
+-- Disabling
+
+---@param disabled? boolean
+function ImGui.BeginDisabled(disabled) end
+
+function ImGui.EndDisabled() end
+
 --- Clipping
 function ImGui.PushClipRect(...) end
 function ImGui.PopClipRect() end
@@ -944,21 +1057,58 @@ function ImGui.IsItemHovered(flags) end
 ---@return boolean
 function ImGui.IsItemActive() end
 
+---@return boolean
 function ImGui.IsItemFocused() end
-function ImGui.IsItemClicked(...) end
+
+---@param button? ImGuiMouseButton
+---@return boolean
+function ImGui.IsItemClicked(button) end
+
+---@return boolean
 function ImGui.IsItemVisible() end
+
+---@return boolean
 function ImGui.IsItemEdited() end
+
+---@return boolean
 function ImGui.IsItemActivated() end
+
+---@return boolean
 function ImGui.IsItemDeactivated() end
+
+---@return boolean
 function ImGui.IsItemDeactivatedAfterEdit() end
+
+---@return boolean
 function ImGui.IsItemToggledOpen() end
+
+---@return boolean
 function ImGui.IsAnyItemHovered() end
+
+---@return boolean
 function ImGui.IsAnyItemActive() end
+
+---@return boolean
 function ImGui.IsAnyItemFocused() end
+
+---@return number, number
 function ImGui.GetItemRectMin() end
+
+---@return number, number
 function ImGui.GetItemRectMax() end
+
+---@return number, number
 function ImGui.GetItemRectSize() end
+
+---@return boolean
 function ImGui.SetItemAllowOverlap() end
+
+
+--- Viewports
+
+---@return ImGuiViewport
+function ImGui.GetMainViewport() end
+
 
 --- Miscellaneous Utilities
 function ImGui.IsRectVisible(...) end
@@ -968,8 +1118,16 @@ function ImGui.GetFrameCount() end
 ---@return ImDrawList
 function ImGui.GetBackgroundDrawList() end
 
+---@param viewport ImGuiViewport
+---@return ImDrawList
+function ImGui.GetBackgroundDrawList(viewport) end
+
 ---@return ImDrawList
 function ImGui.GetForegroundDrawList() end
+
+---@param viewport ImGuiViewport
+---@return ImDrawList
+function ImGui.GetForegroundDrawList(viewport) end
 
 ---@return ImDrawListSharedData
 function ImGui.GetDrawListSharedData() end
@@ -1077,9 +1235,6 @@ function ImGui.GetClipboardText() end
 function ImGui.SetClipboardText(...) end
 
 --- Uncategorized
-
----@return ImGuiStyle
-function ImGui.GetStyle() end
 
 ---@param name string
 ---@param render fun()
