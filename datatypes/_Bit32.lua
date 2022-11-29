@@ -4,8 +4,9 @@
 bit32 = {}
 
 ---Performs bitwise `or` across all provided values and returns the result
----@vararg number
----@return number
+---@generic T:number
+---@vararg T
+---@return T
 function bit32.bor(...) end
 
 ---Performs bitwise `and` across all provided values and returns the result

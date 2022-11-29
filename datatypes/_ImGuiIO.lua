@@ -11,6 +11,7 @@ ImFont = {}
 ImFontAtlas = {}
 
 ---@class ImGuiIO
+---@field public ConfigFlags ImGuiConfigFlags
 ---@field public DisplaySize ImVec2
 ---@field public FontDefault ImFont
 ---@field public Fonts ImFontAtlas

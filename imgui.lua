@@ -167,6 +167,11 @@ function ImGui.SetNextWindowSize(sizeX, sizeY, cond) end
 ---@param cond? ImGuiCond
 function ImGui.SetNextWindowSize(size, cond) end
 
+---@param min ImVec2
+---@param max ImVec2
+---@param customCallback? fun(pos: ImVec2, currentSize: ImVec2, desiredSize: ImVec2): ImVec2
+function ImGui.SetNextWindowSizeConstraints(min, max, customCallback) end
+
 ---@param minX number
 ---@param minY number
 ---@param maxX number
@@ -177,36 +182,48 @@ function ImGui.SetNextWindowSizeConstraints(minX, minY, maxX, maxY) end
 ---@param sizeY number
 function ImGui.SetNextWindowContentSize(sizeX, sizeY) end
 
----@param isCollapsed boolean
----@param imGuiCond? ImGuiCond
-function ImGui.SetNextWindowCollapsed(isCollapsed, imGuiCond) end
+---@param collapsed boolean
+---@param cond? ImGuiCond
+function ImGui.SetNextWindowCollapsed(collapsed, cond) end
 
 function ImGui.SetNextWindowFocus() end
 
 ---@param alpha number
 function ImGui.SetNextWindowBgAlpha(alpha) end
 
+---@param viewportID number
+function ImGui.SetNextWindowViewport(viewportID) end
+
 ---@param name string
 ---@param posX number
 ---@param posY number
----@param imGuiCond? ImGuiCond
-function ImGui.SetWindowPos(name, posX, posY, imGuiCond) end
+---@param cond? ImGuiCond
+function ImGui.SetWindowPos(name, posX, posY, cond) end
 
 ---@param name string
 ---@param sizeX number
 ---@param sizeY number
----@param imGuiCond? ImGuiCond
-function ImGui.SetWindowSize(name, sizeX, sizeY, imGuiCond) end
+---@param cond? ImGuiCond
+function ImGui.SetWindowSize(name, sizeX, sizeY, cond) end
 
 ---@param sizeX number
 ---@param sizeY number
----@param imGuiCond? ImGuiCond
-function ImGui.SetWindowSize(sizeX, sizeY, imGuiCond) end
+---@param cond? ImGuiCond
+function ImGui.SetWindowSize(sizeX, sizeY, cond) end
+
+---@param name string
+---@param size ImVec2
+---@param cond? ImGuiCond
+function ImGui.SetWindowSize(name, size, cond) end
+
+---@param size ImVec2
+---@param cond? ImGuiCond
+function ImGui.SetWindowSize(size, cond) end
 
 ---@param name string
 ---@param isCollapsed boolean
----@param imGuiCond? ImGuiCond
-function ImGui.SetWindowCollapsed(name, isCollapsed, imGuiCond) end
+---@param cond? ImGuiCond
+function ImGui.SetWindowCollapsed(name, isCollapsed, cond) end
 
 ---@param scale number
 function ImGui.SetWindowFontScale(scale) end
@@ -453,17 +470,21 @@ function ImGui.Text(text) end
 ---@param b number
 ---@param a number
 ---@param text string
-function ImGui.TextColored(r, g, b, a, text) end
+---@varargs any
+function ImGui.TextColored(r, g, b, a, text, ...) end
 
 ---@param col ImVec4|ImU32
 ---@param text string
-function ImGui.TextColored(col, text) end
+---@varargs any
+function ImGui.TextColored(col, text, ...) end
 
 ---@param text string
-function ImGui.TextDisabled(text) end
+---@varargs any
+function ImGui.TextDisabled(text, ...) end
 
 ---@param text string
-function ImGui.TextWrapped(text) end
+---@varargs any
+function ImGui.TextWrapped(text, ...) end
 
 ---@param label string
 ---@param text string
@@ -603,121 +624,121 @@ function ImGui.Combo(label, currentItem, getter, itemsCount, popupMaxHeightInIte
 
 ---@param label string
 ---@param value number
----@param value_speed? number
----@param value_min? number
----@param value_max? number
+---@param valueSpeed? number
+---@param valueMin? number
+---@param valueMax? number
 ---@param format? string
 ---@param power? number
 ---@return number value, boolean used
-function ImGui.DragFloat(label, value, value_speed, value_min, value_max, format, power) end
+function ImGui.DragFloat(label, value, valueSpeed, valueMin, valueMax, format, power) end
 
 ---@param label string
 ---@param value number[]  List of 2 values
----@param value_speed? number
----@param value_min? number
----@param value_max? number
+---@param valueSpeed? number
+---@param valueMin? number
+---@param valueMax? number
 ---@param format? string
 ---@param power? number
 ---@return number[] value, boolean used
-function ImGui.DragFloat2(label, value, value_speed, value_min, value_max, format, power) end
+function ImGui.DragFloat2(label, value, valueSpeed, valueMin, valueMax, format, power) end
 
 ---@param label string
 ---@param value number[]  List of 3 values
----@param value_speed? number
----@param value_min? number
----@param value_max? number
+---@param valueSpeed? number
+---@param valueMin? number
+---@param valueMax? number
 ---@param format? string
 ---@param power? number
 ---@return number[] value, boolean used
-function ImGui.DragFloat3(label, value, value_speed, value_min, value_max, format, power) end
+function ImGui.DragFloat3(label, value, valueSpeed, valueMin, valueMax, format, power) end
 
 ---@param label string
 ---@param value number[]  List of 4 values
----@param value_speed? number
----@param value_min? number
----@param value_max? number
+---@param valueSpeed? number
+---@param valueMin? number
+---@param valueMax? number
 ---@param format? string
 ---@param power? number
 ---@return number[] value, boolean used
-function ImGui.DragFloat4(label, value, value_speed, value_min, value_max, format, power) end
+function ImGui.DragFloat4(label, value, valueSpeed, valueMin, valueMax, format, power) end
 
 ---@param label string
 ---@param value integer
----@param value_speed? number
----@param value_min? integer
----@param value_max? integer
+---@param valueSpeed? number
+---@param valueMin? integer
+---@param valueMax? integer
 ---@param format? string
 ---@return integer value, boolean used
-function ImGui.DragInt(label, value, value_speed, value_min, value_max, format) end
+function ImGui.DragInt(label, value, valueSpeed, valueMin, valueMax, format) end
 
 ---@param label string
 ---@param value integer
----@param value_speed? number
----@param value_min? integer
----@param value_max? integer
+---@param valueSpeed? number
+---@param valueMin? integer
+---@param valueMax? integer
 ---@param format? string
 ---@return integer[] value, boolean used
-function ImGui.DragInt2(label, value, value_speed, value_min, value_max, format) end
+function ImGui.DragInt2(label, value, valueSpeed, valueMin, valueMax, format) end
 
 ---@param label string
 ---@param value integer
----@param value_speed? number
----@param value_min? integer
----@param value_max? integer
+---@param valueSpeed? number
+---@param valueMin? integer
+---@param valueMax? integer
 ---@param format? string
 ---@return integer[] value, boolean used
-function ImGui.DragInt3(label, value, value_speed, value_min, value_max, format) end
+function ImGui.DragInt3(label, value, valueSpeed, valueMin, valueMax, format) end
 
 ---@param label string
 ---@param value integer
----@param value_speed? number
----@param value_min? integer
----@param value_max? integer
+---@param valueSpeed? number
+---@param valueMin? integer
+---@param valueMax? integer
 ---@param format? string
 ---@return integer[] value, boolean used
-function ImGui.DragInt4(label, value, value_speed, value_min, value_max, format) end
+function ImGui.DragInt4(label, value, valueSpeed, valueMin, valueMax, format) end
 
 --- Widgets: Sliders
 
 ---@param label string
 ---@param value number
----@param value_speed? number
----@param value_min? number
----@param value_max? number
+---@param valueSpeed? number
+---@param valueMin? number
+---@param valueMax? number
 ---@param format? string
 ---@param power? number
 ---@return number value, boolean used
-function ImGui.SliderFloat(label, value, value_speed, value_min, value_max, format, power) end
+function ImGui.SliderFloat(label, value, valueSpeed, valueMin, valueMax, format, power) end
 
 ---@param label string
 ---@param value number
----@param value_speed? number
----@param value_min? number
----@param value_max? number
+---@param valueSpeed? number
+---@param valueMin? number
+---@param valueMax? number
 ---@param format? string
 ---@param power? number
 ---@return number[] value, boolean used
-function ImGui.SliderFloat2(label, value, value_speed, value_min, value_max, format, power) end
+function ImGui.SliderFloat2(label, value, valueSpeed, valueMin, valueMax, format, power) end
 
 ---@param label string
 ---@param value number
----@param value_speed? number
----@param value_min? number
----@param value_max? number
+---@param valueSpeed? number
+---@param valueMin? number
+---@param valueMax? number
 ---@param format? string
 ---@param power? number
 ---@return number[] value, boolean used
-function ImGui.SliderFloat3(label, value, value_speed, value_min, value_max, format, power) end
+function ImGui.SliderFloat3(label, value, valueSpeed, valueMin, valueMax, format, power) end
 
 ---@param label string
 ---@param value number
----@param value_speed? number
----@param value_min? number
----@param value_max? number
+---@param valueSpeed? number
+---@param valueMin? number
+---@param valueMax? number
 ---@param format? string
 ---@param power? number
 ---@return number[] value, boolean used
-function ImGui.SliderFloat4(label, value, value_speed, value_min, value_max, format, power) end
+function ImGui.SliderFloat4(label, value, valueSpeed, valueMin, valueMax, format, power) end
 
 ---@param label string
 ---@param v_rad number
@@ -764,22 +785,22 @@ function ImGui.SliderInt4(label, v, v_min, v_max, format) end
 ---@param size_x number
 ---@param size_y number
 ---@param value number
----@param value_min number
----@param value_max number
+---@param valueMin number
+---@param valueMax number
 ---@param format? string
 ---@param power? number
 ---@return number value, boolean used
-function ImGui.VSliderFloat(label, size_x, size_y, value, value_min, value_max, format, power) end
+function ImGui.VSliderFloat(label, size_x, size_y, value, valueMin, valueMax, format, power) end
 
 ---@param label string
 ---@param size_x number
 ---@param size_y number
 ---@param value integer
----@param value_min integer
----@param value_max integer
+---@param valueMin integer
+---@param valueMax integer
 ---@param format? string
 ---@return integer value, boolean used
-function ImGui.VSliderInt(label, size_x, size_y, value, value_min, value_max, format) end
+function ImGui.VSliderInt(label, size_x, size_y, value, valueMin, valueMax, format) end
 
 --- Widgets: Input with Keyboard
 
@@ -803,6 +824,7 @@ function ImGui.InputTextMultiline(label, text, size_x, size_y, imGuiInputTextFla
 --- @param imGuiInputTextFlags? ImGuiInputTextFlags
 --- @return string text, boolean selected
 function ImGui.InputTextWithHint(label, hint, text, imGuiInputTextFlags) end
+
 function ImGui.InputFloat(...) end
 function ImGui.InputFloat2(...) end
 function ImGui.InputFloat3(...) end
@@ -814,7 +836,18 @@ function ImGui.InputInt4(...) end
 function ImGui.InputDouble(...) end
 
 --- Widgets: Color Editor / Picker
-function ImGui.ColorEdit3(...) end
+
+---@param label string
+---@param col number[] Color as list of 3 numbers 0.0 to 1.0
+---@param flags? ImGuiColorEditFlags
+---@return number[] col, boolean changed
+function ImGui.ColorEdit3(label, col, flags) end
+
+---@param label string
+---@param col ImVec4
+---@param flags? ImGuiColorEditFlags
+---@return ImVec4 col, boolean changed
+function ImGui.ColorEdit3(label, col, flags) end
 
 ---@param label string
 ---@param col number[]  Color as list of 4 numbers 0.0 to 1.0
@@ -929,7 +962,9 @@ function ImGui.BeginTooltip() end
 function ImGui.EndTooltip() end
 function ImGui.SetTooltip(...) end
 
---- Popups, Modals
+--
+-- Popups, Modals
+--
 
 --- return true if the popup is open, and you can start outputting to it.
 ---@param strId string
@@ -937,11 +972,21 @@ function ImGui.SetTooltip(...) end
 ---@return boolean
 function ImGui.BeginPopup(strId, flags) end
 
---- return true if the modal is open, and you can start outputting to it.
+
+--- If no open param is provided, or if it is nil, then only the boolean
+--- result from BeginPopupModal is returned.
 ---@param name string
----@param open? boolean
+---@param open? nil
 ---@param flags? ImGuiWindowFlags
 ---@return boolean
+function ImGui.BeginPopupModal(name, open, flags) end
+
+--- If open is provided as a boolean argument, then the updated value for
+--- open is returned first, and then the result from BeginPopupModal.
+---@param name string
+---@param open boolean
+---@param flags? ImGuiWindowFlags
+---@return boolean open, boolean show
 function ImGui.BeginPopupModal(name, open, flags) end
 
 function ImGui.EndPopup() end
@@ -959,13 +1004,29 @@ function ImGui.OpenPopupOnItemClick(strId, flags) end
 
 function ImGui.CloseCurrentPopup() end
 
-function ImGui.BeginPopupContextItem(...) end
-function ImGui.BeginPopupContextWindow(...) end
-function ImGui.BeginPopupContextVoid(...) end
+---@param strId? string
+---@param flags? ImGuiPopupFlags
+---@return boolean
+function ImGui.BeginPopupContextItem(strId, flags) end
 
-function ImGui.IsPopupOpen(...) end
+---@param strId? string
+---@param flags? ImGuiPopupFlags
+---@return boolean
+function ImGui.BeginPopupContextWindow(strId, flags) end
 
---- Columns
+---@param strId? string
+---@param flags? ImGuiPopupFlags
+---@return boolean
+function ImGui.BeginPopupContextVoid(strId, flags) end
+
+---@param strId string
+---@param flags? ImGuiPopupFlags
+function ImGui.IsPopupOpen(strId, flags) end
+
+--
+-- Columns
+--
+
 ---@param count? integer
 ---@param text? string
 ---@param border? boolean
@@ -1019,9 +1080,25 @@ function ImGui.EndTabItem() end
 ---@param tabOrDockedWindowLabel string
 function ImGui.SetTabItemClosed(tabOrDockedWindowLabel) end
 
---- Docking
-function ImGui.DockSpace(...) end
-function ImGui.SetNextWindowDockID(...) end
+--
+-- Docking
+--
+
+---@param id number
+---@param size? ImVec2
+---@param flags? ImGuiDockNodeFlags
+function ImGui.DockSpace(id, size, flags) end
+
+---@param id number
+---@param sizeX number
+---@param sizeY number
+---@param flags? ImGuiDockNodeFlags
+function ImGui.DockSpace(id, sizeX, sizeY, flags) end
+
+---@param dockId number
+---@param cond? ImGuiCond
+function ImGui.SetNextWindowDockID(dockId, cond) end
+
 function ImGui.GetWindowDockID() end
 function ImGui.IsWindowDocked() end
 
@@ -1133,7 +1210,21 @@ function ImGui.GetForegroundDrawList(viewport) end
 function ImGui.GetDrawListSharedData() end
 
 function ImGui.GetStyleColorName(...) end
-function ImGui.BeginChildFrame(...) end
+
+---@param id number
+---@param sizeX number
+---@param sizeY number
+---@param flags? ImGuiWindowFlags
+---@return boolean
+function ImGui.BeginChildFrame(id, sizeX, sizeY, flags) end
+
+---@param id number
+---@param size number
+---@param flags? ImGuiWindowFlags
+---@return boolean
+function ImGui.BeginChildFrame(id, size, flags) end
+
+
 function ImGui.EndChildFrame() end
 
 --- Text Utilities
@@ -1190,7 +1281,29 @@ function ImGui.IsMouseReleased(button) end
 ---@return boolean
 function ImGui.IsMouseDoubleClicked(button) end
 
-function ImGui.IsMouseHoveringRect(...) end
+--- is mouse hovering given bounding rect (in screen space). clipped by current clipping settings,
+--- but disregarding of other consideration of focus/window ordering/popup-block.
+---@param minX number
+---@param minY number
+---@param maxX number
+---@param maxY number
+---@param clip? boolean
+---@return boolean
+function ImGui.IsMouseHoveringRect(minX, minY, maxX, maxY, clip) end
+
+--- is mouse hovering given bounding rect (in screen space). clipped by current clipping settings,
+--- but disregarding of other consideration of focus/window ordering/popup-block.
+---@param min ImVec2
+---@param max ImVec2
+---@param clip? boolean
+---@return boolean
+function ImGui.IsMouseHoveringRect(min, max, clip) end
+
+--- if pos is not provided, will use the current mouse pos
+---@param pos? ImVec2
+function ImGui.IsMousePosValid(pos) end
+
+---@return boolean
 function ImGui.IsAnyMouseDown() end
 
 ---@return number x, number y
