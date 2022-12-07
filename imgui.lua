@@ -914,14 +914,6 @@ function ImGui.Selectable(label, selected, flags, size) end
 function ImGui.Selectable(label, selected, flags, sizeX, sizeY) end
 
 --- Widgets: List Boxes
-
----@param label string
----@param size? ImVec2
----@return boolean changed
-function ImGui.BeginListBox(label, size) end
-
-function ImGui.EndListBox() end
-
 ---@param label string
 ---@param current_item integer
 ---@param items table
