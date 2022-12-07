@@ -512,6 +512,7 @@ function ImGui.SmallButton(label) end
 ---@param label string
 ---@param sizeX number
 ---@param sizeY number
+---@return boolean clicked
 function ImGui.InvisibleButton(label, sizeX, sizeY) end
 
 ---@param label string
@@ -596,18 +597,18 @@ function ImGui.BeginCombo(label, previewValue, flags) end
 function ImGui.EndCombo() end
 
 ---@param label string
----@param currentItem integer
----@param items table
----@param itemsCount integer
----@param popupMaxHeightInItems? integer
----@return integer
+---@param currentItem number
+---@param items string[]
+---@param itemsCount number
+---@param popupMaxHeightInItems? number
+---@return number currentItem, boolean clicked
 function ImGui.Combo(label, currentItem, items, itemsCount, popupMaxHeightInItems) end
 
 ---@param label string
 ---@param currentItem number
 ---@param itemsSeparatedByZeros string
----@param popupMaxHeightInItems? integer
----@return integer
+---@param popupMaxHeightInItems? number
+---@return number
 function ImGui.Combo(label, currentItem, itemsSeparatedByZeros, popupMaxHeightInItems) end
 
 ---@param label string
@@ -914,6 +915,14 @@ function ImGui.Selectable(label, selected, flags, size) end
 function ImGui.Selectable(label, selected, flags, sizeX, sizeY) end
 
 --- Widgets: List Boxes
+
+---@param label string
+---@param size? ImVec2
+---@return boolean changed
+function ImGui.BeginListBox(label, size) end
+
+function ImGui.EndListBox() end
+
 ---@param label string
 ---@param current_item integer
 ---@param items table
