@@ -1238,7 +1238,7 @@ function ImGui.GetStyleColorName(...) end
 function ImGui.BeginChildFrame(id, sizeX, sizeY, flags) end
 
 ---@param id number
----@param size number
+---@param size ImVec2
 ---@param flags? ImGuiWindowFlags
 ---@return boolean
 function ImGui.BeginChildFrame(id, size, flags) end
