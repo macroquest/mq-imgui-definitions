@@ -11,4 +11,5 @@ ImGuiTabBarFlags = {
   NoTooltip = 0, -- Disable tooltips when hovering a tab
   FittingPolicyResizeDown = 0, -- Resize tabs when they don't fit
   FittingPolicyScroll = 0, -- Add scroll buttons when tabs don't fit
+  FittingPolicyDefault_ = 64,
 }
